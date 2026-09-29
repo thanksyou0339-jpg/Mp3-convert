@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jindua Traders - Product Ad Maker</title>
+<title>JANJUA TRADERS - 9:16 Product Ad Maker</title>
 
 <style>
 *{
@@ -20,9 +20,9 @@ body{
 }
 
 .container{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
-    padding:20px;
+    padding:18px;
 }
 
 h1{
@@ -30,14 +30,11 @@ h1{
     margin:5px 0 20px;
 }
 
-/* =========================
-   MAIN LAYOUT
-========================= */
-
 .main{
     display:grid;
-    grid-template-columns:330px 1fr;
+    grid-template-columns:340px 1fr;
     gap:20px;
+    align-items:start;
 }
 
 .control-panel{
@@ -49,7 +46,7 @@ h1{
 
 label{
     display:block;
-    margin-top:14px;
+    margin-top:13px;
     margin-bottom:6px;
     font-weight:bold;
 }
@@ -73,6 +70,11 @@ button{
     font-weight:bold;
 }
 
+button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
 .btn-green{
     background:#20c997;
     color:#06130f;
@@ -83,20 +85,30 @@ button{
     color:white;
 }
 
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
+.btn-red{
+    background:#ff6b6b;
+    color:#250000;
 }
 
 .help{
     color:#aeb6c2;
     font-size:13px;
-    line-height:1.7;
+    line-height:1.8;
     margin-top:15px;
 }
 
+.status{
+    margin-top:12px;
+    padding:10px;
+    border-radius:10px;
+    background:#0d1117;
+    border:1px solid #30363d;
+    color:#61efc4;
+    font-size:13px;
+}
+
 /* =========================
-   VIDEO STAGE
+   PREVIEW
 ========================= */
 
 .preview-area{
@@ -110,7 +122,7 @@ button:disabled{
     width:100%;
     max-width:450px;
 
-    aspect-ratio:9/16;
+    aspect-ratio:9 / 16;
 
     overflow:hidden;
 
@@ -119,12 +131,13 @@ button:disabled{
     background:
         radial-gradient(
             circle at top left,
-            #303b50,
+            #34435a,
             #111722 55%,
             #080b10
         );
 
-    box-shadow:0 20px 60px rgba(0,0,0,.7);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.7);
 }
 
 /* =========================
@@ -132,23 +145,20 @@ button:disabled{
 ========================= */
 
 .music-player{
-
     position:absolute;
 
     top:5%;
     left:5%;
 
-    width:43%;
+    width:45%;
 
     z-index:10;
 
     direction:ltr;
-
     text-align:left;
 }
 
 .music-name{
-
     font-size:11px;
 
     white-space:nowrap;
@@ -161,7 +171,6 @@ button:disabled{
 }
 
 .progress{
-
     width:100%;
 
     height:5px;
@@ -174,7 +183,6 @@ button:disabled{
 }
 
 .progress-bar{
-
     width:0%;
 
     height:100%;
@@ -183,7 +191,6 @@ button:disabled{
 }
 
 .music-buttons{
-
     display:flex;
 
     gap:4px;
@@ -192,7 +199,6 @@ button:disabled{
 }
 
 .music-buttons button{
-
     background:rgba(255,255,255,.15);
 
     color:white;
@@ -207,7 +213,6 @@ button:disabled{
 ========================= */
 
 .product-card{
-
     position:absolute;
 
     top:24%;
@@ -230,7 +235,6 @@ button:disabled{
 }
 
 .product-card img{
-
     width:100%;
     height:100%;
 
@@ -285,11 +289,10 @@ button:disabled{
 }
 
 /* =========================
-   PRODUCT INFORMATION
+   PRODUCT INFO
 ========================= */
 
 .product-info{
-
     position:absolute;
 
     bottom:7%;
@@ -303,7 +306,6 @@ button:disabled{
 }
 
 .product-name{
-
     font-size:22px;
 
     font-weight:800;
@@ -313,7 +315,6 @@ button:disabled{
 }
 
 .product-price{
-
     margin-top:5px;
 
     font-size:19px;
@@ -322,7 +323,6 @@ button:disabled{
 }
 
 .brand{
-
     position:absolute;
 
     bottom:2%;
@@ -341,15 +341,11 @@ button:disabled{
 @media(max-width:760px){
 
     .main{
-
         grid-template-columns:1fr;
-
     }
 
     .stage{
-
         max-width:430px;
-
     }
 
 }
@@ -362,7 +358,7 @@ button:disabled{
 <div class="container">
 
 <h1>
-Jindua Traders — Product Advertisement Maker
+JANJUA TRADERS — Product Advertisement Maker
 </h1>
 
 
@@ -374,6 +370,7 @@ Jindua Traders — Product Advertisement Maker
 =========================================== -->
 
 <div class="control-panel">
+
 
 <label>
 1۔ پروڈکٹ کی تصویر
@@ -387,7 +384,7 @@ Jindua Traders — Product Advertisement Maker
 
 
 <label>
-2۔ MP3 میوزک
+2۔ MP3 / Music
 </label>
 
 <input
@@ -420,7 +417,7 @@ Jindua Traders — Product Advertisement Maker
 
 
 <label>
-5۔ Product Card Animation
+5۔ Animation
 </label>
 
 <select id="animationSelect">
@@ -434,7 +431,32 @@ Zoom — زوم
 </option>
 
 <option value="slide">
-Slide — دائیں بائیں حرکت
+Slide — دائیں بائیں
+</option>
+
+</select>
+
+
+<label>
+6۔ Video Duration
+</label>
+
+<select id="durationSelect">
+
+<option value="10">
+10 سیکنڈ
+</option>
+
+<option value="15">
+15 سیکنڈ
+</option>
+
+<option value="20">
+20 سیکنڈ
+</option>
+
+<option value="30">
+30 سیکنڈ
 </option>
 
 </select>
@@ -474,22 +496,62 @@ Slide — دائیں بائیں حرکت
     class="btn-green"
     id="recordButton"
 >
-⏺️ ویڈیو ریکارڈ کریں
+⏺️ 9:16 ویڈیو بنائیں
 </button>
 
 
 <button
-    class="btn-dark"
+    class="btn-red"
     id="stopButton"
     disabled
 >
-⏹️ ریکارڈ بند کریں
+⏹️ Stop
 </button>
+
+
+<div
+    class="status"
+    id="status"
+>
+تیار ہے — Image اور MP3 منتخب کریں۔
+</div>
 
 
 <div class="help">
 
-<b>طریقہ:</b>
+<b>اہم خصوصیات:</b>
+
+<br>
+
+✓ Screen Share کی ضرورت نہیں
+
+<br>
+
+✓ صرف 9:16 Advertisement ریکارڈ ہوگی
+
+<br>
+
+✓ MP3 ویڈیو میں شامل ہوگی
+
+<br>
+
+✓ Product Animation شامل ہوگی
+
+<br>
+
+✓ 720 × 1280 Vertical Video
+
+<br>
+
+✓ موبائل اور کمپیوٹر دونوں پر کام
+
+<br>
+
+✓ ویڈیو مکمل ہونے پر Download
+
+<br><br>
+
+<b>استعمال:</b>
 
 <br>
 
@@ -497,7 +559,7 @@ Slide — دائیں بائیں حرکت
 
 <br>
 
-2۔ MP3 Music منتخب کریں۔
+2۔ MP3 منتخب کریں۔
 
 <br>
 
@@ -509,28 +571,28 @@ Slide — دائیں بائیں حرکت
 
 <br>
 
-5۔ Preview چلائیں۔
+5۔ Video Duration منتخب کریں۔
 
 <br>
 
-6۔ "ویڈیو ریکارڈ کریں" دبائیں۔
+6۔ "9:16 ویڈیو بنائیں" دبائیں۔
 
 <br>
 
-7۔ Browser کی Screen Sharing میں Preview Window منتخب کریں۔
-
-<br>
-
-8۔ ریکارڈ ختم کرنے کے لیے "ریکارڈ بند کریں" دبائیں۔
+7۔ ویڈیو مکمل ہونے کے بعد Download خود شروع ہوگا۔
 
 <br><br>
 
-ویڈیو WebM Format میں Download ہوگی۔
+<b>نوٹ:</b>
+
+<br>
+
+ویڈیو WebM format میں بنے گی۔
+یہ Browser کی Screen Recording نہیں ہے۔
 
 </div>
 
 </div>
-
 
 
 <!-- ==========================================
@@ -545,7 +607,7 @@ Slide — دائیں بائیں حرکت
 >
 
 
-<!-- MUSIC -->
+<!-- MUSIC PLAYER -->
 
 <div class="music-player">
 
@@ -555,6 +617,7 @@ Slide — دائیں بائیں حرکت
 >
 MP3 Music
 </div>
+
 
 <div class="progress">
 
@@ -569,15 +632,21 @@ MP3 Music
 
 <div class="music-buttons">
 
-<button id="previousButton">
+<button
+    id="previousButton"
+>
 ⏮
 </button>
 
-<button id="playSmall">
+<button
+    id="playSmall"
+>
 ▶
 </button>
 
-<button id="nextButton">
+<button
+    id="nextButton"
+>
 ⏭
 </button>
 
@@ -586,8 +655,7 @@ MP3 Music
 </div>
 
 
-
-<!-- PRODUCT CARD -->
+<!-- PRODUCT -->
 
 <div
     class="product-card"
@@ -602,8 +670,7 @@ MP3 Music
 </div>
 
 
-
-<!-- PRODUCT INFO -->
+<!-- PRODUCT INFORMATION -->
 
 <div class="product-info">
 
@@ -613,6 +680,7 @@ MP3 Music
 >
 آپ کی پروڈکٹ
 </div>
+
 
 <div
     class="product-price"
@@ -625,9 +693,7 @@ Rs. 2,300
 
 
 <div class="brand">
-
-JINDUA TRADERS
-
+JANJUA TRADERS
 </div>
 
 
@@ -638,7 +704,6 @@ JINDUA TRADERS
 </div>
 
 </div>
-
 
 
 <!-- AUDIO -->
@@ -649,12 +714,11 @@ JINDUA TRADERS
 </audio>
 
 
-
 <script>
 
-/* ==========================================
+/* =====================================================
    ELEMENTS
-========================================== */
+===================================================== */
 
 const imageInput =
     document.getElementById("imageInput");
@@ -686,63 +750,129 @@ const productCard =
 const animationSelect =
     document.getElementById("animationSelect");
 
+const durationSelect =
+    document.getElementById("durationSelect");
+
 const progressBar =
     document.getElementById("progressBar");
 
+const statusBox =
+    document.getElementById("status");
 
 
-/* ==========================================
+let imageURL = null;
+
+let audioURL = null;
+
+let recorder = null;
+
+let recordedChunks = [];
+
+let audioContext = null;
+
+let sourceNode = null;
+
+let destinationNode = null;
+
+let animationFrame = null;
+
+let recordingStart = 0;
+
+let recordingDuration = 10;
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function setStatus(message){
+
+    statusBox.textContent =
+        message;
+
+}
+
+
+/* =====================================================
    IMAGE
-========================================== */
+===================================================== */
 
 imageInput.addEventListener(
     "change",
     function(){
 
-        if(this.files.length > 0){
+        if(!this.files.length){
+            return;
+        }
 
-            productImage.src =
-                URL.createObjectURL(
-                    this.files[0]
-                );
+        if(imageURL){
+
+            URL.revokeObjectURL(
+                imageURL
+            );
 
         }
+
+        imageURL =
+            URL.createObjectURL(
+                this.files[0]
+            );
+
+        productImage.src =
+            imageURL;
+
+        setStatus(
+            "Product Image load ہو گئی ہے۔"
+        );
 
     }
 );
 
 
-
-/* ==========================================
+/* =====================================================
    AUDIO
-========================================== */
+===================================================== */
 
 audioInput.addEventListener(
     "change",
     function(){
 
-        if(this.files.length > 0){
+        if(!this.files.length){
+            return;
+        }
 
-            audio.src =
-                URL.createObjectURL(
-                    this.files[0]
-                );
+        if(audioURL){
 
-            document.getElementById(
-                "musicName"
-            ).textContent =
-                this.files[0].name;
+            URL.revokeObjectURL(
+                audioURL
+            );
 
         }
+
+        audioURL =
+            URL.createObjectURL(
+                this.files[0]
+            );
+
+        audio.src =
+            audioURL;
+
+        document.getElementById(
+            "musicName"
+        ).textContent =
+            this.files[0].name;
+
+        setStatus(
+            "Music load ہو گئی ہے۔"
+        );
 
     }
 );
 
 
-
-/* ==========================================
+/* =====================================================
    PRODUCT TEXT
-========================================== */
+===================================================== */
 
 productName.addEventListener(
     "input",
@@ -767,10 +897,9 @@ productPrice.addEventListener(
 );
 
 
-
-/* ==========================================
-   MUSIC CONTROL
-========================================== */
+/* =====================================================
+   MUSIC
+===================================================== */
 
 function playMusic(){
 
@@ -781,10 +910,16 @@ function playMusic(){
         );
 
         return;
-
     }
 
-    audio.play();
+    audio.play()
+        .catch(function(){
+
+            setStatus(
+                "Play button دوبارہ دبائیں۔"
+            );
+
+        });
 
 }
 
@@ -798,81 +933,78 @@ function pauseMusic(){
 
 document.getElementById(
     "playButton"
-).onclick = playMusic;
+).onclick =
+    playMusic;
 
 
 document.getElementById(
     "pauseButton"
-).onclick = pauseMusic;
+).onclick =
+    pauseMusic;
 
 
 document.getElementById(
     "playSmall"
-).onclick = function(){
+).onclick =
+    function(){
 
-    if(audio.paused){
+        if(audio.paused){
 
-        playMusic();
+            playMusic();
 
-    }else{
+        }else{
 
-        pauseMusic();
+            pauseMusic();
 
-    }
+        }
 
-};
+    };
 
 
 document.getElementById(
     "restartButton"
-).onclick = function(){
+).onclick =
+    function(){
 
-    audio.currentTime = 0;
+        audio.currentTime =
+            0;
 
-    playMusic();
+        playMusic();
 
-};
+    };
 
-
-
-/* ==========================================
-   PREVIOUS / NEXT
-========================================== */
 
 document.getElementById(
     "previousButton"
-).onclick = function(){
+).onclick =
+    function(){
 
-    audio.currentTime =
-        Math.max(
-            0,
-            audio.currentTime - 5
-        );
+        audio.currentTime =
+            Math.max(
+                0,
+                audio.currentTime - 5
+            );
 
-};
+    };
 
 
 document.getElementById(
     "nextButton"
-).onclick = function(){
+).onclick =
+    function(){
 
-    if(audio.duration){
+        if(audio.duration){
 
-        audio.currentTime =
-            Math.min(
-                audio.duration,
-                audio.currentTime + 5
-            );
+            audio.currentTime =
+                Math.min(
+                    audio.duration,
+                    audio.currentTime + 5
+                );
 
-    }
+        }
 
-};
+    };
 
-
-
-/* ==========================================
-   PROGRESS BAR
-========================================== */
 
 audio.addEventListener(
     "timeupdate",
@@ -895,18 +1027,14 @@ audio.addEventListener(
 );
 
 
-
-/* ==========================================
-   PLAY / PAUSE ICON
-========================================== */
-
 audio.addEventListener(
     "play",
     function(){
 
         document.getElementById(
             "playSmall"
-        ).textContent = "⏸";
+        ).textContent =
+            "⏸";
 
     }
 );
@@ -918,222 +1046,476 @@ audio.addEventListener(
 
         document.getElementById(
             "playSmall"
-        ).textContent = "▶";
+        ).textContent =
+            "▶";
 
     }
 );
 
 
+/* =====================================================
+   PREVIEW ANIMATION
+===================================================== */
 
-/* ==========================================
-   ANIMATION
-========================================== */
+function updatePreviewAnimation(){
+
+    productCard.style.animation =
+        "none";
+
+    void productCard.offsetWidth;
+
+    if(
+        animationSelect.value ===
+        "floating"
+    ){
+
+        productCard.style.animation =
+            "floating 3.5s ease-in-out infinite";
+
+    }
+
+    else if(
+        animationSelect.value ===
+        "zoom"
+    ){
+
+        productCard.style.animation =
+            "zoom 3s ease-in-out infinite";
+
+    }
+
+    else if(
+        animationSelect.value ===
+        "slide"
+    ){
+
+        productCard.style.animation =
+            "slide 3s ease-in-out infinite";
+
+    }
+
+}
+
 
 animationSelect.addEventListener(
     "change",
-    function(){
-
-        productCard.style.animation =
-            "none";
-
-        void productCard.offsetWidth;
-
-
-        if(this.value === "floating"){
-
-            productCard.style.animation =
-                "floating 3.5s ease-in-out infinite";
-
-        }
-
-
-        if(this.value === "zoom"){
-
-            productCard.style.animation =
-                "zoom 3s ease-in-out infinite";
-
-        }
-
-
-        if(this.value === "slide"){
-
-            productCard.style.animation =
-                "slide 3s ease-in-out infinite";
-
-        }
-
-    }
+    updatePreviewAnimation
 );
 
 
-
-/* ==========================================
-   VIDEO RECORDING
-========================================== */
-
-let recorder = null;
-
-let recordedChunks = [];
+updatePreviewAnimation();
 
 
-document.getElementById(
-    "recordButton"
-).onclick = async function(){
+/* =====================================================
+   CANVAS HELPERS
+===================================================== */
 
-    if(!audio.src){
+function roundedRect(
+    ctx,
+    x,
+    y,
+    width,
+    height,
+    radius
+){
 
-        alert(
-            "پہلے MP3 Music منتخب کریں۔"
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x + radius,
+        y
+    );
+
+    ctx.arcTo(
+        x + width,
+        y,
+        x + width,
+        y + height,
+        radius
+    );
+
+    ctx.arcTo(
+        x + width,
+        y + height,
+        x,
+        y + height,
+        radius
+    );
+
+    ctx.arcTo(
+        x,
+        y + height,
+        x,
+        y,
+        radius
+    );
+
+    ctx.arcTo(
+        x,
+        y,
+        x + width,
+        y,
+        radius
+    );
+
+    ctx.closePath();
+
+}
+
+
+/* =====================================================
+   PRODUCT CONTAIN
+===================================================== */
+
+function drawContain(
+    ctx,
+    image,
+    x,
+    y,
+    width,
+    height
+){
+
+    const scale =
+        Math.min(
+            width / image.width,
+            height / image.height
         );
 
-        return;
+    const drawWidth =
+        image.width * scale;
 
-    }
+    const drawHeight =
+        image.height * scale;
+
+    const drawX =
+        x +
+        (width - drawWidth) / 2;
+
+    const drawY =
+        y +
+        (height - drawHeight) / 2;
+
+    ctx.drawImage(
+        image,
+        drawX,
+        drawY,
+        drawWidth,
+        drawHeight
+    );
+
+}
 
 
-    if(!productImage.src){
+/* =====================================================
+   CREATE VIDEO
+===================================================== */
+
+async function createVideo(){
+
+    if(
+        !imageInput.files.length
+    ){
 
         alert(
             "پہلے Product Image منتخب کریں۔"
         );
 
         return;
+    }
+
+
+    if(
+        !audioInput.files.length
+    ){
+
+        alert(
+            "پہلے MP3 Music منتخب کریں۔"
+        );
+
+        return;
+    }
+
+
+    if(
+        !window.MediaRecorder
+    ){
+
+        alert(
+            "آپ کا Browser Video Recording support نہیں کرتا۔ Google Chrome یا Microsoft Edge استعمال کریں۔"
+        );
+
+        return;
+    }
+
+
+    const image =
+        new Image();
+
+
+    image.src =
+        imageURL;
+
+
+    await new Promise(
+        function(resolve,reject){
+
+            image.onload =
+                resolve;
+
+            image.onerror =
+                reject;
+
+        }
+    );
+
+
+    /* ================================================
+       9:16 CANVAS
+    ================================================= */
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    canvas.width =
+        720;
+
+
+    canvas.height =
+        1280;
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    const FPS =
+        30;
+
+
+    const canvasStream =
+        canvas.captureStream(
+            FPS
+        );
+
+
+    /* ================================================
+       AUDIO CONTEXT
+    ================================================= */
+
+    if(!audioContext){
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+
+        sourceNode =
+            audioContext
+            .createMediaElementSource(
+                audio
+            );
+
+
+        destinationNode =
+            audioContext
+            .createMediaStreamDestination();
+
+
+        sourceNode.connect(
+            destinationNode
+        );
+
+
+        sourceNode.connect(
+            audioContext.destination
+        );
 
     }
 
 
-    try{
-
-        /*
-        Browser Screen Recording
-        */
-
-        const stream =
-            await navigator.mediaDevices
-            .getDisplayMedia({
-
-                video:{
-                    frameRate:30
-                },
-
-                audio:true
-
-            });
+    await audioContext.resume();
 
 
+    /* ================================================
+       MIX VIDEO + AUDIO
+    ================================================= */
 
-        let options = {
+    const finalStream =
+        new MediaStream();
 
-            mimeType:
-                "video/webm;codecs=vp9,opus"
+
+    canvasStream
+        .getVideoTracks()
+        .forEach(
+            function(track){
+
+                finalStream.addTrack(
+                    track
+                );
+
+            }
+        );
+
+
+    destinationNode.stream
+        .getAudioTracks()
+        .forEach(
+            function(track){
+
+                finalStream.addTrack(
+                    track
+                );
+
+            }
+        );
+
+
+    /* ================================================
+       MIME TYPE
+    ================================================= */
+
+    let mimeType =
+        "video/webm;codecs=vp9,opus";
+
+
+    if(
+        !MediaRecorder.isTypeSupported(
+            mimeType
+        )
+    ){
+
+        mimeType =
+            "video/webm;codecs=vp8,opus";
+
+    }
+
+
+    if(
+        !MediaRecorder.isTypeSupported(
+            mimeType
+        )
+    ){
+
+        mimeType =
+            "video/webm";
+
+    }
+
+
+    /* ================================================
+       RECORDER
+    ================================================= */
+
+    recorder =
+        new MediaRecorder(
+            finalStream,
+            {
+                mimeType:
+                    mimeType,
+
+                videoBitsPerSecond:
+                    6000000,
+
+                audioBitsPerSecond:
+                    128000
+            }
+        );
+
+
+    recordedChunks = [];
+
+
+    recorder.ondataavailable =
+        function(event){
+
+            if(
+                event.data &&
+                event.data.size > 0
+            ){
+
+                recordedChunks.push(
+                    event.data
+                );
+
+            }
 
         };
 
 
-        if(
-            !MediaRecorder
-            .isTypeSupported(
-                options.mimeType
-            )
-        ){
+    recorder.onstop =
+        function(){
 
-            options = {
+            if(animationFrame){
 
-                mimeType:
-                    "video/webm"
+                cancelAnimationFrame(
+                    animationFrame
+                );
 
-            };
-
-        }
+            }
 
 
+            const blob =
+                new Blob(
+                    recordedChunks,
+                    {
+                        type:
+                            mimeType
+                    }
+                );
 
-        recorder =
-            new MediaRecorder(
-                stream,
-                options
+
+            const videoURL =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            const download =
+                document.createElement(
+                    "a"
+                );
+
+
+            download.href =
+                videoURL;
+
+
+            download.download =
+                "JANJUA-TRADERS-9x16-Product-Ad.webm";
+
+
+            document.body.appendChild(
+                download
             );
 
 
-        recordedChunks = [];
+            download.click();
 
 
+            download.remove();
 
-        recorder.ondataavailable =
-            function(event){
 
-                if(
-                    event.data &&
-                    event.data.size > 0
-                ){
+            setTimeout(
+                function(){
 
-                    recordedChunks.push(
-                        event.data
+                    URL.revokeObjectURL(
+                        videoURL
                     );
 
-                }
-
-            };
-
-
-
-        recorder.onstop =
-            function(){
-
-                const blob =
-                    new Blob(
-                        recordedChunks,
-                        {
-                            type:
-                                "video/webm"
-                        }
-                    );
+                },
+                5000
+            );
 
 
-                const url =
-                    URL.createObjectURL(
-                        blob
-                    );
-
-
-                const downloadLink =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                downloadLink.href =
-                    url;
-
-
-                downloadLink.download =
-                    "Jindua-Traders-Product-Ad.webm";
-
-
-                document.body.appendChild(
-                    downloadLink
-                );
-
-
-                downloadLink.click();
-
-
-                downloadLink.remove();
-
-
-                setTimeout(
-                    function(){
-
-                        URL.revokeObjectURL(
-                            url
-                        );
-
-                    },
-                    2000
-                );
-
-
-                stream
+            finalStream
                 .getTracks()
                 .forEach(
                     function(track){
@@ -1144,102 +1526,761 @@ document.getElementById(
                 );
 
 
-                document.getElementById(
-                    "stopButton"
-                ).disabled = true;
+            audio.pause();
 
 
-                document.getElementById(
-                    "recordButton"
-                ).disabled = false;
-
-            };
-
+            document.getElementById(
+                "stopButton"
+            ).disabled =
+                true;
 
 
-        /*
-        اگر user نے Browser کا
-        Share/Stop بٹن دبایا
-        */
+            document.getElementById(
+                "recordButton"
+            ).disabled =
+                false;
 
-        stream
-        .getVideoTracks()[0]
-        .addEventListener(
-            "ended",
-            function(){
 
-                if(
-                    recorder &&
-                    recorder.state !==
-                    "inactive"
-                ){
+            setStatus(
+                "✅ ویڈیو تیار ہے۔ Download شروع ہو گیا ہے۔"
+            );
 
-                    recorder.stop();
+        };
 
-                }
+
+    /* ================================================
+       START
+    ================================================= */
+
+    recordingDuration =
+        Number(
+            durationSelect.value
+        );
+
+
+    audio.currentTime =
+        0;
+
+
+    recorder.start(
+        250
+    );
+
+
+    document.getElementById(
+        "recordButton"
+    ).disabled =
+        true;
+
+
+    document.getElementById(
+        "stopButton"
+    ).disabled =
+        false;
+
+
+    setStatus(
+        "🎬 9:16 ویڈیو بن رہی ہے..."
+    );
+
+
+    audio.play()
+        .catch(function(){
+
+            setStatus(
+                "Music Play نہیں ہوئی۔ Play button دبائیں۔"
+            );
+
+        });
+
+
+    recordingStart =
+        performance.now();
+
+
+    /* ================================================
+       DRAW LOOP
+    ================================================= */
+
+    function drawFrame(
+        currentTime
+    ){
+
+        if(
+            !recorder ||
+            recorder.state ===
+            "inactive"
+        ){
+
+            return;
+
+        }
+
+
+        const elapsed =
+            (
+                currentTime -
+                recordingStart
+            ) / 1000;
+
+
+        /* ============================================
+           BACKGROUND
+        ============================================ */
+
+        const background =
+            ctx.createRadialGradient(
+                130,
+                100,
+                20,
+                650,
+                1200,
+                900
+            );
+
+
+        background.addColorStop(
+            0,
+            "#34435a"
+        );
+
+
+        background.addColorStop(
+            .55,
+            "#111722"
+        );
+
+
+        background.addColorStop(
+            1,
+            "#080b10"
+        );
+
+
+        ctx.fillStyle =
+            background;
+
+
+        ctx.fillRect(
+            0,
+            0,
+            720,
+            1280
+        );
+
+
+        /* ============================================
+           MOVING LIGHT
+        ============================================ */
+
+        ctx.globalAlpha =
+            .15;
+
+
+        ctx.fillStyle =
+            "#20c997";
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            100 +
+            Math.sin(elapsed) * 70,
+
+            220 +
+            Math.cos(elapsed) * 50,
+
+            110,
+
+            0,
+
+            Math.PI * 2
+        );
+
+
+        ctx.fill();
+
+
+        ctx.globalAlpha =
+            1;
+
+
+        /* ============================================
+           MUSIC PLAYER
+        ============================================ */
+
+        const mx =
+            36;
+
+        const my =
+            55;
+
+        const mw =
+            305;
+
+
+        ctx.fillStyle =
+            "rgba(0,0,0,.22)";
+
+
+        roundedRect(
+            ctx,
+            mx - 10,
+            my - 12,
+            mw + 20,
+            88,
+            16
+        );
+
+
+        ctx.fill();
+
+
+        ctx.fillStyle =
+            "#fff";
+
+
+        ctx.font =
+            "bold 17px Arial";
+
+
+        ctx.textAlign =
+            "left";
+
+
+        let musicTitle =
+            audioInput.files[0].name;
+
+
+        if(
+            musicTitle.length > 30
+        ){
+
+            musicTitle =
+                musicTitle.substring(
+                    0,
+                    27
+                ) + "...";
+
+        }
+
+
+        ctx.fillText(
+            musicTitle,
+            mx,
+            my + 8
+        );
+
+
+        /* progress background */
+
+        ctx.fillStyle =
+            "rgba(255,255,255,.22)";
+
+
+        roundedRect(
+            ctx,
+            mx,
+            my + 25,
+            mw,
+            7,
+            4
+        );
+
+
+        ctx.fill();
+
+
+        /* progress */
+
+        let progress =
+            0;
+
+
+        if(audio.duration){
+
+            progress =
+                audio.currentTime /
+                audio.duration;
+
+        }
+
+
+        progress =
+            Math.min(
+                1,
+                Math.max(
+                    0,
+                    progress
+                )
+            );
+
+
+        ctx.fillStyle =
+            "#20c997";
+
+
+        roundedRect(
+            ctx,
+            mx,
+            my + 25,
+            mw * progress,
+            7,
+            4
+        );
+
+
+        ctx.fill();
+
+
+        /* buttons */
+
+        ctx.fillStyle =
+            "rgba(255,255,255,.16)";
+
+
+        const buttons =
+            [
+                mx + 25,
+                mx + 70,
+                mx + 115
+            ];
+
+
+        buttons.forEach(
+            function(x){
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    x,
+                    my + 55,
+                    15,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fill();
 
             }
         );
 
 
-
-        recorder.start();
-
-
-        document.getElementById(
-            "stopButton"
-        ).disabled = false;
+        ctx.fillStyle =
+            "#fff";
 
 
-        document.getElementById(
-            "recordButton"
-        ).disabled = true;
+        ctx.font =
+            "14px Arial";
 
 
-        /*
-        Music automatically starts
-        */
-
-        audio.currentTime = 0;
-
-        playMusic();
-
-
-    }
-
-    catch(error){
-
-        alert(
-            "Screen Recording کی اجازت نہیں ملی۔ Browser میں Screen/Tab Share کی اجازت دیں۔"
+        ctx.fillText(
+            "⏮",
+            mx + 17,
+            my + 60
         );
 
+
+        ctx.fillText(
+            "▶",
+            mx + 64,
+            my + 60
+        );
+
+
+        ctx.fillText(
+            "⏭",
+            mx + 108,
+            my + 60
+        );
+
+
+        /* ============================================
+           PRODUCT CARD
+        ============================================ */
+
+        const cardX =
+            50;
+
+        const cardY =
+            285;
+
+        const cardW =
+            620;
+
+        const cardH =
+            665;
+
+
+        let scale =
+            1;
+
+        let moveX =
+            0;
+
+        let moveY =
+            0;
+
+        let rotation =
+            0;
+
+
+        if(
+            animationSelect.value ===
+            "floating"
+        ){
+
+            const wave =
+                Math.sin(
+                    elapsed *
+                    Math.PI *
+                    2 /
+                    3.5
+                );
+
+
+            moveY =
+                wave * 15;
+
+
+            rotation =
+                wave * 0.012;
+
+
+            scale =
+                1 +
+                wave * 0.012;
+
+        }
+
+
+        else if(
+            animationSelect.value ===
+            "zoom"
+        ){
+
+            scale =
+                1 +
+                Math.sin(
+                    elapsed *
+                    Math.PI *
+                    2 /
+                    3
+                ) * .035;
+
+        }
+
+
+        else if(
+            animationSelect.value ===
+            "slide"
+        ){
+
+            moveX =
+                Math.sin(
+                    elapsed *
+                    Math.PI *
+                    2 /
+                    3
+                ) * 18;
+
+        }
+
+
+        ctx.save();
+
+
+        ctx.translate(
+            360 + moveX,
+            620 + moveY
+        );
+
+
+        ctx.rotate(
+            rotation
+        );
+
+
+        ctx.scale(
+            scale,
+            scale
+        );
+
+
+        ctx.translate(
+            -360,
+            -620
+        );
+
+
+        /* shadow */
+
+        ctx.shadowColor =
+            "rgba(0,0,0,.65)";
+
+
+        ctx.shadowBlur =
+            45;
+
+
+        ctx.shadowOffsetY =
+            20;
+
+
+        ctx.fillStyle =
+            "#ffffff";
+
+
+        roundedRect(
+            ctx,
+            cardX,
+            cardY,
+            cardW,
+            cardH,
+            30
+        );
+
+
+        ctx.fill();
+
+
+        ctx.shadowColor =
+            "transparent";
+
+
+        /* image area */
+
+        ctx.save();
+
+
+        roundedRect(
+            ctx,
+            cardX + 12,
+            cardY + 12,
+            cardW - 24,
+            cardH - 24,
+            22
+        );
+
+
+        ctx.clip();
+
+
+        ctx.fillStyle =
+            "#f4f4f4";
+
+
+        ctx.fillRect(
+            cardX + 12,
+            cardY + 12,
+            cardW - 24,
+            cardH - 24
+        );
+
+
+        drawContain(
+            ctx,
+            image,
+            cardX + 20,
+            cardY + 20,
+            cardW - 40,
+            cardH - 40
+        );
+
+
+        ctx.restore();
+
+
+        ctx.restore();
+
+
+        /* ============================================
+           PRODUCT NAME
+        ============================================ */
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.fillStyle =
+            "#ffffff";
+
+
+        ctx.font =
+            "800 42px Arial";
+
+
+        let name =
+            productName.value ||
+            "آپ کی پروڈکٹ";
+
+
+        if(
+            name.length > 25
+        ){
+
+            name =
+                name.substring(
+                    0,
+                    23
+                ) + "...";
+
+        }
+
+
+        ctx.shadowColor =
+            "rgba(0,0,0,.8)";
+
+
+        ctx.shadowBlur =
+            12;
+
+
+        ctx.fillText(
+            name,
+            360,
+            1110
+        );
+
+
+        ctx.shadowBlur =
+            0;
+
+
+        /* ============================================
+           PRICE
+        ============================================ */
+
+        ctx.fillStyle =
+            "#61efc4";
+
+
+        ctx.font =
+            "bold 35px Arial";
+
+
+        ctx.fillText(
+            productPrice.value ||
+            "",
+            360,
+            1160
+        );
+
+
+        /* ============================================
+           BRAND
+        ============================================ */
+
+        ctx.fillStyle =
+            "rgba(255,255,255,.55)";
+
+
+        ctx.font =
+            "bold 15px Arial";
+
+
+        ctx.textAlign =
+            "left";
+
+
+        ctx.fillText(
+            "JANJUA TRADERS",
+            36,
+            1235
+        );
+
+
+        /* ============================================
+           STOP AT DURATION
+        ============================================ */
+
+        if(
+            elapsed >=
+            recordingDuration
+        ){
+
+            recorder.stop();
+
+            return;
+
+        }
+
+
+        animationFrame =
+            requestAnimationFrame(
+                drawFrame
+            );
+
     }
 
-};
+
+    animationFrame =
+        requestAnimationFrame(
+            drawFrame
+        );
+
+}
 
 
+/* =====================================================
+   RECORD BUTTON
+===================================================== */
 
-/* ==========================================
-   STOP RECORDING
-========================================== */
+document.getElementById(
+    "recordButton"
+).onclick =
+    function(){
+
+        createVideo()
+            .catch(
+                function(error){
+
+                    console.error(
+                        error
+                    );
+
+                    alert(
+                        "Video بنانے میں مسئلہ آیا: " +
+                        error.message
+                    );
+
+                    document.getElementById(
+                        "recordButton"
+                    ).disabled =
+                        false;
+
+                    document.getElementById(
+                        "stopButton"
+                    ).disabled =
+                        true;
+
+                }
+            );
+
+    };
+
+
+/* =====================================================
+   STOP BUTTON
+===================================================== */
 
 document.getElementById(
     "stopButton"
-).onclick = function(){
+).onclick =
+    function(){
 
-    if(
-        recorder &&
-        recorder.state !==
-        "inactive"
-    ){
+        if(
+            recorder &&
+            recorder.state !==
+            "inactive"
+        ){
 
-        recorder.stop();
+            recorder.stop();
 
-    }
+        }
 
-    audio.pause();
-
-};
+    };
 
 </script>
 
