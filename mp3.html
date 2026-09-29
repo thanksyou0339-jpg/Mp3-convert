@@ -5,9 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>JANJUA TRADERS - Product Video Maker</title>
+<title>JANJUA TRADERS - MP4 Video Maker</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -19,80 +20,71 @@ body{
     color:#fff;
 }
 
-header{
-    background:#181a1f;
+.header{
+    background:#181a20;
     padding:18px;
     text-align:center;
-    border-bottom:1px solid #303239;
+    border-bottom:1px solid #333;
 }
 
-header h1{
+.header h1{
     margin:0;
-    font-size:24px;
+    font-size:27px;
 }
 
-header p{
+.header p{
     margin:7px 0 0;
     color:#aaa;
-    font-size:13px;
 }
 
-.app{
-    max-width:1250px;
+.container{
+    max-width:1200px;
     margin:auto;
     padding:20px;
-}
 
-.layout{
     display:grid;
-    grid-template-columns:360px 1fr;
-    gap:25px;
-    align-items:start;
+    grid-template-columns:370px 1fr;
+    gap:20px;
 }
 
-.panel{
-    background:#191b20;
-    border:1px solid #303239;
-    border-radius:16px;
+.panel,
+.preview-area{
+    background:#191b21;
+    border:1px solid #30323a;
+    border-radius:15px;
     padding:18px;
 }
 
-.panel h2{
-    font-size:18px;
-    margin:0 0 15px;
+h2{
+    font-size:19px;
+    margin:5px 0 15px;
 }
 
-.section{
-    border-bottom:1px solid #303239;
-    padding-bottom:16px;
+.group{
     margin-bottom:16px;
-}
-
-.section:last-child{
-    border-bottom:0;
 }
 
 label{
     display:block;
-    font-size:13px;
+    margin-bottom:7px;
+    font-size:14px;
     color:#ddd;
-    margin:10px 0 6px;
 }
 
 input,
 select,
 button{
     width:100%;
-    border-radius:9px;
-    border:1px solid #3b3e46;
     padding:11px;
-    background:#101216;
-    color:#fff;
+    border:0;
+    border-radius:9px;
     font-size:14px;
 }
 
-input[type="file"]{
-    padding:8px;
+input,
+select{
+    background:#292c34;
+    color:#fff;
 }
 
 input[type="range"]{
@@ -100,1560 +92,1850 @@ input[type="range"]{
 }
 
 button{
+    background:#287cf0;
+    color:#fff;
+    font-weight:bold;
     cursor:pointer;
-    background:#252830;
-    transition:.2s;
+    margin-top:7px;
 }
 
 button:hover{
-    background:#333640;
+    opacity:.9;
 }
 
-button.primary{
-    background:#087f5b;
-    border-color:#087f5b;
+button.green{
+    background:#16a05d;
 }
 
-button.primary:hover{
-    background:#099268;
+button.red{
+    background:#d43b3b;
 }
 
-button.danger{
-    background:#9b2226;
-    border-color:#9b2226;
+button.gray{
+    background:#454852;
 }
 
-button.download{
-    background:#1769aa;
-    border-color:#1769aa;
+button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
 }
 
-.row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
-
-.three{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:7px;
-}
-
-.ratio-info{
-    margin-top:8px;
-    padding:9px;
-    background:#101216;
-    border-radius:8px;
-    font-size:12px;
+.info{
+    background:#23262e;
+    padding:11px;
+    border-radius:9px;
+    font-size:13px;
     color:#bbb;
+    margin-top:7px;
     line-height:1.6;
 }
 
-.music-time{
+.music-box{
+    background:#22252c;
+    padding:12px;
+    border-radius:10px;
+}
+
+.music-row{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:8px;
 }
 
-.check{
+.checkbox{
     display:flex;
     align-items:center;
     gap:8px;
     margin-top:10px;
-    color:#ddd;
-    font-size:13px;
 }
 
-.check input{
+.checkbox input{
     width:auto;
 }
 
-.preview-area{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.checkbox label{
+    margin:0;
 }
 
 .preview-title{
-    width:100%;
-    background:#191b20;
-    border:1px solid #303239;
-    border-radius:12px;
-    padding:12px 15px;
+    text-align:center;
+    font-size:19px;
     margin-bottom:15px;
 }
 
-.preview-title strong{
-    color:#ddd;
-}
+.canvas-holder{
+    min-height:520px;
 
-.stage-wrap{
-    width:min(90vw,760px);
     display:flex;
-    justify-content:center;
     align-items:center;
-    background:#08090b;
-    border-radius:18px;
-    padding:15px;
-    min-height:500px;
+    justify-content:center;
 }
 
-#previewCanvas{
-    display:block;
+canvas{
     max-width:100%;
     max-height:75vh;
-    width:auto;
-    height:auto;
     background:#fff;
     border-radius:10px;
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    box-shadow:0 0 25px rgba(0,0,0,.5);
 }
 
-.status-box{
-    width:100%;
+.progress-box{
     margin-top:15px;
-    background:#191b20;
-    border:1px solid #303239;
-    border-radius:12px;
-    padding:14px;
+    background:#22252c;
+    padding:10px;
+    border-radius:10px;
 }
 
-.status-text{
-    font-size:13px;
+progress{
+    width:100%;
+    height:15px;
+}
+
+.status{
+    min-height:22px;
+    margin-top:9px;
     color:#bbb;
-    margin-bottom:8px;
 }
 
-.progress{
-    height:8px;
-    background:#303239;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    width:0%;
-    height:100%;
-    background:#12b886;
-    transition:width .1s linear;
-}
-
-.recorded{
-    width:100%;
-    margin-top:15px;
+.result{
     display:none;
+    margin-top:20px;
+    background:#191b21;
+    padding:15px;
+    border-radius:15px;
+    border:1px solid #30323a;
 }
 
-.recorded video{
+.result video{
     width:100%;
-    max-height:500px;
+    max-height:600px;
     background:#000;
-    border-radius:12px;
+    border-radius:10px;
+}
+
+.download{
+    display:block;
+    text-decoration:none;
+    background:#16a05d;
+    color:#fff;
+    padding:15px;
+    border-radius:10px;
+    margin-top:12px;
+    text-align:center;
+    font-weight:bold;
 }
 
 .small{
-    color:#999;
-    font-size:11px;
-    line-height:1.6;
-}
-
-.music-level{
-    display:flex;
-    justify-content:space-between;
     font-size:12px;
-    color:#aaa;
+    color:#999;
+    margin-top:5px;
 }
 
-.brand{
-    position:absolute;
-    left:15px;
-    top:15px;
-    background:rgba(0,0,0,.65);
-    padding:6px 10px;
-    border-radius:20px;
-    font-size:11px;
+.ffmpeg-status{
+    background:#252830;
+    padding:10px;
+    border-radius:9px;
+    margin-top:10px;
+    font-size:13px;
+    color:#bbb;
 }
 
 @media(max-width:850px){
-    .layout{
+
+    .container{
         grid-template-columns:1fr;
     }
 
-    .panel{
-        order:2;
+    .canvas-holder{
+        min-height:400px;
     }
 
-    .preview-area{
-        order:1;
-    }
-
-    .stage-wrap{
-        min-height:300px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<header>
+
+<div class="header">
+
     <h1>JANJUA TRADERS</h1>
-    <p>Professional Product Video Maker</p>
-</header>
 
-<div class="app">
+    <p>Professional MP4 Product Video Maker</p>
 
-<div class="layout">
+</div>
 
-<!-- ================= CONTROL PANEL ================= -->
+
+<div class="container">
+
+
+<!-- =========================
+     LEFT SETTINGS
+========================= -->
 
 <div class="panel">
 
-    <div class="section">
 
-        <h2>📐 Video Ratio</h2>
+<h2>🎬 Video Settings</h2>
 
-        <label>Platform منتخب کریں</label>
 
-        <select id="ratioSelect">
+<!-- RATIO -->
 
-            <option value="tiktok">
-                TikTok — 9:16
-            </option>
+<div class="group">
 
-            <option value="youtube">
-                YouTube — 16:9
-            </option>
+<label>
+1. Video Ratio منتخب کریں
+</label>
 
-            <option value="instagram">
-                Instagram — 4:5
-            </option>
+<select id="ratio">
 
-            <option value="facebook">
-                Facebook — 4:5
-            </option>
+<option value="tiktok">
+TikTok — 9:16 — 720×1280
+</option>
 
-            <option value="custom">
-                Custom Ratio
-            </option>
+<option value="youtube">
+YouTube — 16:9 — 1280×720
+</option>
 
-        </select>
+<option value="shorts">
+YouTube Shorts — 9:16 — 720×1280
+</option>
 
-        <div id="customRatioBox" style="display:none">
+<option value="instagram">
+Instagram Post — 4:5 — 1080×1350
+</option>
 
-            <div class="row">
+<option value="reel">
+Instagram Reel/Story — 9:16 — 720×1280
+</option>
 
-                <div>
-                    <label>Width</label>
-                    <input
-                        type="number"
-                        id="customWidth"
-                        value="720"
-                        min="100"
-                    >
-                </div>
+<option value="facebook">
+Facebook Post — 1:1 — 1080×1080
+</option>
 
-                <div>
-                    <label>Height</label>
-                    <input
-                        type="number"
-                        id="customHeight"
-                        value="1280"
-                        min="100"
-                    >
-                </div>
+<option value="facebookreel">
+Facebook Reel/Story — 9:16 — 720×1280
+</option>
 
-            </div>
+</select>
 
-        </div>
 
-        <div class="ratio-info" id="ratioInfo">
-            TikTok Vertical Video<br>
-            Ratio: 9:16<br>
-            Resolution: 720 × 1280
-        </div>
-
-    </div>
-
-
-    <!-- IMAGE -->
-
-    <div class="section">
-
-        <h2>🖼️ Product</h2>
-
-        <label>Product Image</label>
-
-        <input
-            type="file"
-            id="imageInput"
-            accept="image/*"
-        >
-
-        <label>Product Name</label>
-
-        <input
-            type="text"
-            id="productName"
-            value="آپ کی پروڈکٹ"
-        >
-
-        <label>Product Price</label>
-
-        <input
-            type="text"
-            id="productPrice"
-            value="Rs. 2,300"
-        >
-
-    </div>
-
-
-    <!-- ANIMATION -->
-
-    <div class="section">
-
-        <h2>🎬 Animation</h2>
-
-        <label>Product Animation</label>
-
-        <select id="animationSelect">
-
-            <option value="float">
-                Floating
-            </option>
-
-            <option value="zoom">
-                Zoom In / Out
-            </option>
-
-            <option value="slide">
-                Slide
-            </option>
-
-            <option value="rotate">
-                Slow Rotate
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <!-- VIDEO TIME -->
-
-    <div class="section">
-
-        <h2>⏱️ Video Duration</h2>
-
-        <label>Video Length</label>
-
-        <select id="durationSelect">
-
-            <option value="5">5 Seconds</option>
-            <option value="10" selected>10 Seconds</option>
-            <option value="15">15 Seconds</option>
-            <option value="20">20 Seconds</option>
-            <option value="30">30 Seconds</option>
-            <option value="60">60 Seconds</option>
-
-        </select>
-
-    </div>
-
-
-    <!-- MUSIC -->
-
-    <div class="section">
-
-        <h2>🎵 Background Music</h2>
-
-        <label>MP3 / Audio File</label>
-
-        <input
-            type="file"
-            id="audioInput"
-            accept="audio/*"
-        >
-
-        <div class="music-level">
-
-            <span>Music Volume</span>
-
-            <strong id="volumeText">100%</strong>
-
-        </div>
-
-        <input
-            type="range"
-            id="volumeRange"
-            min="0"
-            max="1"
-            step="0.01"
-            value="1"
-        >
-
-        <label>Music کا کون سا حصہ استعمال کرنا ہے؟</label>
-
-        <div class="music-time">
-
-            <div>
-
-                <label>Start (Seconds)</label>
-
-                <input
-                    type="number"
-                    id="musicStart"
-                    value="0"
-                    min="0"
-                    step="0.1"
-                >
-
-            </div>
-
-            <div>
-
-                <label>End (Seconds)</label>
-
-                <input
-                    type="number"
-                    id="musicEnd"
-                    value="0"
-                    min="0"
-                    step="0.1"
-                >
-
-            </div>
-
-        </div>
-
-        <label class="check">
-
-            <input
-                type="checkbox"
-                id="loopMusic"
-                checked
-            >
-
-            Music کو ویڈیو ختم ہونے تک Loop کریں
-
-        </label>
-
-        <p class="small">
-            End = 0 کا مطلب ہے پورا available MP3 استعمال ہوگا۔
-            اگر Start 10 اور End 25 کریں تو MP3 کے صرف 10 سے 25 سیکنڈ والا حصہ استعمال ہوگا۔
-        </p>
-
-        <audio
-            id="audioPlayer"
-            controls
-            style="width:100%;margin-top:8px"
-        ></audio>
-
-    </div>
-
-
-    <!-- CONTROLS -->
-
-    <div class="section">
-
-        <h2>🎥 Video Controls</h2>
-
-        <div class="row">
-
-            <button id="playBtn" class="primary">
-                ▶ Play
-            </button>
-
-            <button id="pauseBtn">
-                ⏸ Pause
-            </button>
-
-        </div>
-
-        <div style="height:8px"></div>
-
-        <div class="row">
-
-            <button id="restartBtn">
-                🔄 Restart
-            </button>
-
-            <button id="recordBtn" class="primary">
-                🔴 Record Video
-            </button>
-
-        </div>
-
-        <div style="height:8px"></div>
-
-        <button
-            id="stopBtn"
-            class="danger"
-        >
-            ⏹ Stop Recording
-        </button>
-
-    </div>
-
-
-    <div>
-
-        <button
-            id="downloadBtn"
-            class="download"
-            style="display:none"
-        >
-            ⬇️ Download Video
-        </button>
-
-    </div>
+<div
+class="info"
+id="ratioInfo"
+>
+TikTok — 9:16 — 720×1280
+</div>
 
 </div>
 
 
-<!-- ================= PREVIEW ================= -->
+<!-- OUTPUT -->
+
+<div class="group">
+
+<label>
+2. Output Format
+</label>
+
+<select id="outputFormat">
+
+<option value="mp4">
+MP4 — H.264 / AAC
+</option>
+
+<option value="webm">
+WebM — Backup Format
+</option>
+
+</select>
+
+
+<div class="info">
+
+MP4 منتخب ہونے پر ویڈیو کو FFmpeg کے ذریعے
+حقیقی MP4 میں convert کیا جائے گا۔
+
+</div>
+
+</div>
+
+
+<!-- IMAGE -->
+
+<div class="group">
+
+<label>
+3. Product Image
+</label>
+
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+>
+
+</div>
+
+
+<!-- NAME -->
+
+<div class="group">
+
+<label>
+Product Name
+</label>
+
+<input
+type="text"
+id="productName"
+placeholder="مثلاً Rechargeable Fan"
+>
+
+</div>
+
+
+<!-- PRICE -->
+
+<div class="group">
+
+<label>
+Product Price
+</label>
+
+<input
+type="text"
+id="productPrice"
+placeholder="Rs. 2300"
+>
+
+</div>
+
+
+<!-- ANIMATION -->
+
+<div class="group">
+
+<label>
+Product Animation
+</label>
+
+<select id="animation">
+
+<option value="float">
+Float
+</option>
+
+<option value="zoom">
+Zoom
+</option>
+
+<option value="slide">
+Slide
+</option>
+
+<option value="rotate">
+Rotate
+</option>
+
+<option value="none">
+No Animation
+</option>
+
+</select>
+
+</div>
+
+
+<!-- DURATION -->
+
+<div class="group">
+
+<label>
+Video Duration
+</label>
+
+<select id="duration">
+
+<option value="5">
+5 Seconds
+</option>
+
+<option value="10">
+10 Seconds
+</option>
+
+<option value="15">
+15 Seconds
+</option>
+
+<option value="20">
+20 Seconds
+</option>
+
+<option value="30">
+30 Seconds
+</option>
+
+<option value="60">
+60 Seconds
+</option>
+
+</select>
+
+</div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<h2>🎵 MP3 Background Music</h2>
+
+
+<div class="group">
+
+<label>
+MP3 Song Upload کریں
+</label>
+
+<input
+type="file"
+id="musicInput"
+accept="audio/mpeg,audio/mp3,audio/*"
+>
+
+</div>
+
+
+<div class="music-box">
+
+
+<label>
+Music Volume
+</label>
+
+
+<input
+type="range"
+id="volume"
+min="0"
+max="1"
+step="0.01"
+value="1"
+>
+
+
+<div class="small">
+
+Volume:
+<span id="volumeText">
+100%
+</span>
+
+</div>
+
+
+<div class="music-row">
+
+
+<div>
+
+<label>
+Start Time
+</label>
+
+<input
+type="number"
+id="musicStart"
+value="0"
+min="0"
+step="0.1"
+>
+
+</div>
+
+
+<div>
+
+<label>
+End Time
+</label>
+
+<input
+type="number"
+id="musicEnd"
+value="0"
+min="0"
+step="0.1"
+>
+
+</div>
+
+
+</div>
+
+
+<div class="small">
+
+End Time = 0 رکھنے سے پوری MP3 استعمال ہوگی۔
+
+</div>
+
+
+<button
+class="gray"
+id="fullMusicBtn"
+>
+Use Full MP3
+</button>
+
+
+<div class="checkbox">
+
+<input
+type="checkbox"
+id="loopMusic"
+checked
+>
+
+<label>
+Selected Music Loop کریں
+</label>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     CONTROLS
+========================= -->
+
+<h2>
+🎮 Video Controls
+</h2>
+
+
+<button
+id="previewBtn"
+class="gray"
+>
+▶ Preview
+</button>
+
+
+<button
+id="pauseBtn"
+class="gray"
+>
+⏸ Pause
+</button>
+
+
+<button
+id="restartBtn"
+class="gray"
+>
+🔄 Restart
+</button>
+
+
+<button
+id="recordBtn"
+class="green"
+>
+🎥 Create MP4 Video
+</button>
+
+
+<button
+id="stopBtn"
+class="red"
+disabled
+>
+⏹ Stop
+</button>
+
+
+<div
+class="ffmpeg-status"
+id="ffmpegStatus"
+>
+MP4 Engine: Ready to Load
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     PREVIEW
+========================= -->
 
 <div class="preview-area">
 
-    <div class="preview-title">
 
-        <strong>Live Preview</strong>
+<div class="preview-title">
 
-        <span id="previewRatio">
-            TikTok — 9:16
-        </span>
+📱 Video Preview
 
-    </div>
+</div>
 
 
-    <div class="stage-wrap">
+<div class="canvas-holder">
 
-        <canvas id="previewCanvas"></canvas>
+<canvas
+id="canvas"
+width="720"
+height="1280"
+>
+</canvas>
 
-    </div>
-
-
-    <div class="status-box">
-
-        <div
-            class="status-text"
-            id="statusText"
-        >
-            Ready — ویڈیو بنانے کے لیے Record Video دبائیں۔
-        </div>
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="progressBar"
-            ></div>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div
-        class="recorded"
-        id="recordedBox"
-    >
+<div class="progress-box">
 
-        <h3>🎬 Recorded Video</h3>
+<progress
+id="progress"
+value="0"
+max="100"
+>
+</progress>
 
-        <video
-            id="recordedVideo"
-            controls
-        ></video>
 
-    </div>
+<div
+class="status"
+id="status"
+>
+Ready
+</div>
+
+</div>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+class="result"
+id="result"
+>
+
+<h2>
+✅ MP4 Video تیار ہے
+</h2>
+
+
+<video
+id="resultVideo"
+controls
+playsinline
+>
+</video>
+
+
+<a
+id="downloadBtn"
+class="download"
+download="JANJUA-TRADERS-Video.mp4"
+>
+⬇️ Download MP4 Video
+</a>
+
+
+</div>
+
 
 </div>
 
 </div>
-</div>
 
 
-<script>
 
-/* =========================================================
+<!-- =========================
+     FFMPEG
+========================= -->
+
+<script type="module">
+
+import {
+    FFmpeg
+} from "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js";
+
+
+import {
+    fetchFile,
+    toBlobURL
+} from "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js";
+
+
+/* =========================
    ELEMENTS
-========================================================= */
-
-const imageInput =
-    document.getElementById("imageInput");
-
-const audioInput =
-    document.getElementById("audioInput");
-
-const productName =
-    document.getElementById("productName");
-
-const productPrice =
-    document.getElementById("productPrice");
-
-const animationSelect =
-    document.getElementById("animationSelect");
-
-const durationSelect =
-    document.getElementById("durationSelect");
-
-const ratioSelect =
-    document.getElementById("ratioSelect");
-
-const customRatioBox =
-    document.getElementById("customRatioBox");
-
-const customWidth =
-    document.getElementById("customWidth");
-
-const customHeight =
-    document.getElementById("customHeight");
-
-const ratioInfo =
-    document.getElementById("ratioInfo");
-
-const previewRatio =
-    document.getElementById("previewRatio");
-
-const volumeRange =
-    document.getElementById("volumeRange");
-
-const volumeText =
-    document.getElementById("volumeText");
-
-const musicStart =
-    document.getElementById("musicStart");
-
-const musicEnd =
-    document.getElementById("musicEnd");
-
-const loopMusic =
-    document.getElementById("loopMusic");
-
-const audio =
-    document.getElementById("audioPlayer");
+========================= */
 
 const canvas =
-    document.getElementById("previewCanvas");
+document.getElementById("canvas");
 
 const ctx =
-    canvas.getContext("2d");
+canvas.getContext("2d");
 
-const playBtn =
-    document.getElementById("playBtn");
+
+const ratioSelect =
+document.getElementById("ratio");
+
+const ratioInfo =
+document.getElementById("ratioInfo");
+
+
+const outputFormat =
+document.getElementById("outputFormat");
+
+
+const imageInput =
+document.getElementById("imageInput");
+
+
+const musicInput =
+document.getElementById("musicInput");
+
+
+const productName =
+document.getElementById("productName");
+
+
+const productPrice =
+document.getElementById("productPrice");
+
+
+const animation =
+document.getElementById("animation");
+
+
+const duration =
+document.getElementById("duration");
+
+
+const volume =
+document.getElementById("volume");
+
+
+const volumeText =
+document.getElementById("volumeText");
+
+
+const musicStart =
+document.getElementById("musicStart");
+
+
+const musicEnd =
+document.getElementById("musicEnd");
+
+
+const loopMusic =
+document.getElementById("loopMusic");
+
+
+const previewBtn =
+document.getElementById("previewBtn");
+
 
 const pauseBtn =
-    document.getElementById("pauseBtn");
+document.getElementById("pauseBtn");
+
 
 const restartBtn =
-    document.getElementById("restartBtn");
+document.getElementById("restartBtn");
+
 
 const recordBtn =
-    document.getElementById("recordBtn");
+document.getElementById("recordBtn");
+
 
 const stopBtn =
-    document.getElementById("stopBtn");
+document.getElementById("stopBtn");
+
+
+const fullMusicBtn =
+document.getElementById("fullMusicBtn");
+
+
+const progress =
+document.getElementById("progress");
+
+
+const status =
+document.getElementById("status");
+
+
+const result =
+document.getElementById("result");
+
+
+const resultVideo =
+document.getElementById("resultVideo");
+
 
 const downloadBtn =
-    document.getElementById("downloadBtn");
-
-const statusText =
-    document.getElementById("statusText");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const recordedBox =
-    document.getElementById("recordedBox");
-
-const recordedVideo =
-    document.getElementById("recordedVideo");
+document.getElementById("downloadBtn");
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-let productImage = null;
-
-let imageURL = null;
-let audioURL = null;
-
-let isPlaying = false;
-let isRecording = false;
-
-let animationStartTime = 0;
-
-let recorder = null;
-let recordedChunks = [];
-
-let finalVideoBlob = null;
-let finalVideoURL = null;
-
-let audioContext = null;
-let sourceNode = null;
-let destinationNode = null;
-
-let animationFrame = null;
-
-let currentWidth = 720;
-let currentHeight = 1280;
+const ffmpegStatus =
+document.getElementById("ffmpegStatus");
 
 
-/* =========================================================
-   RATIO SETTINGS
-========================================================= */
 
-function setCanvasRatio(){
+/* =========================
+   RATIO
+========================= */
 
-    const selected = ratioSelect.value;
+const ratios = {
 
-    let w = 720;
-    let h = 1280;
+    tiktok:{
+        w:720,
+        h:1280,
+        name:"TikTok",
+        info:"TikTok — 9:16 — 720×1280"
+    },
 
-    if(selected === "tiktok"){
+    youtube:{
+        w:1280,
+        h:720,
+        name:"YouTube",
+        info:"YouTube — 16:9 — 1280×720"
+    },
 
-        w = 720;
-        h = 1280;
+    shorts:{
+        w:720,
+        h:1280,
+        name:"YouTube-Shorts",
+        info:"YouTube Shorts — 9:16 — 720×1280"
+    },
 
-        previewRatio.textContent =
-            "TikTok — 9:16";
+    instagram:{
+        w:1080,
+        h:1350,
+        name:"Instagram",
+        info:"Instagram Post — 4:5 — 1080×1350"
+    },
 
-        ratioInfo.innerHTML =
-            "TikTok Vertical Video<br>" +
-            "Ratio: 9:16<br>" +
-            "Resolution: 720 × 1280";
+    reel:{
+        w:720,
+        h:1280,
+        name:"Instagram-Reel",
+        info:"Instagram Reel/Story — 9:16 — 720×1280"
+    },
 
-        customRatioBox.style.display =
-            "none";
+    facebook:{
+        w:1080,
+        h:1080,
+        name:"Facebook",
+        info:"Facebook Post — 1:1 — 1080×1080"
+    },
+
+    facebookreel:{
+        w:720,
+        h:1280,
+        name:"Facebook-Reel",
+        info:"Facebook Reel/Story — 9:16 — 720×1280"
     }
 
-    else if(selected === "youtube"){
+};
 
-        w = 1280;
-        h = 720;
 
-        previewRatio.textContent =
-            "YouTube — 16:9";
+function setRatio(){
 
-        ratioInfo.innerHTML =
-            "YouTube Landscape Video<br>" +
-            "Ratio: 16:9<br>" +
-            "Resolution: 1280 × 720";
+    const r =
+    ratios[
+        ratioSelect.value
+    ];
 
-        customRatioBox.style.display =
-            "none";
-    }
+    canvas.width =
+    r.w;
 
-    else if(selected === "instagram"){
+    canvas.height =
+    r.h;
 
-        w = 1080;
-        h = 1350;
-
-        previewRatio.textContent =
-            "Instagram — 4:5";
-
-        ratioInfo.innerHTML =
-            "Instagram Feed Video<br>" +
-            "Ratio: 4:5<br>" +
-            "Resolution: 1080 × 1350";
-
-        customRatioBox.style.display =
-            "none";
-    }
-
-    else if(selected === "facebook"){
-
-        w = 1080;
-        h = 1350;
-
-        previewRatio.textContent =
-            "Facebook — 4:5";
-
-        ratioInfo.innerHTML =
-            "Facebook Feed Video<br>" +
-            "Ratio: 4:5<br>" +
-            "Resolution: 1080 × 1350";
-
-        customRatioBox.style.display =
-            "none";
-    }
-
-    else{
-
-        w =
-            parseInt(customWidth.value) ||
-            720;
-
-        h =
-            parseInt(customHeight.value) ||
-            1280;
-
-        previewRatio.textContent =
-            "Custom — " + w + ":" + h;
-
-        ratioInfo.innerHTML =
-            "Custom Video<br>" +
-            "Ratio: " + w + ":" + h + "<br>" +
-            "Resolution: " + w + " × " + h;
-
-        customRatioBox.style.display =
-            "block";
-    }
-
-    currentWidth = w;
-    currentHeight = h;
-
-    canvas.width = w;
-    canvas.height = h;
+    ratioInfo.textContent =
+    r.info;
 
     drawFrame(0);
 
 }
 
 
-/* =========================================================
-   IMAGE UPLOAD
-========================================================= */
+ratioSelect.addEventListener(
+    "change",
+    setRatio
+);
+
+
+
+/* =========================
+   IMAGE
+========================= */
+
+let image =
+new Image();
+
+let imageLoaded =
+false;
+
+let imageURL =
+null;
+
 
 imageInput.addEventListener(
     "change",
     function(){
 
         const file =
-            this.files[0];
+        this.files[0];
 
         if(!file)
-            return;
+        return;
 
-        if(imageURL)
-            URL.revokeObjectURL(imageURL);
+
+        if(imageURL){
+
+            URL.revokeObjectURL(
+                imageURL
+            );
+
+        }
+
 
         imageURL =
-            URL.createObjectURL(file);
+        URL.createObjectURL(
+            file
+        );
 
-        productImage =
-            new Image();
 
-        productImage.onload =
-            function(){
+        image.onload =
+        function(){
 
-                drawFrame(0);
+            imageLoaded =
+            true;
 
-                statusText.textContent =
-                    "Product image loaded successfully.";
+            drawFrame(0);
 
-            };
+            status.textContent =
+            "Product Image Loaded";
 
-        productImage.src =
-            imageURL;
+        };
+
+
+        image.src =
+        imageURL;
 
     }
 );
 
 
-/* =========================================================
-   AUDIO UPLOAD
-========================================================= */
 
-audioInput.addEventListener(
+/* =========================
+   AUDIO
+========================= */
+
+const audio =
+new Audio();
+
+audio.preload =
+"auto";
+
+let audioLoaded =
+false;
+
+let audioURL =
+null;
+
+
+musicInput.addEventListener(
     "change",
     function(){
 
         const file =
-            this.files[0];
+        this.files[0];
 
         if(!file)
-            return;
+        return;
 
-        if(audioURL)
-            URL.revokeObjectURL(audioURL);
+
+        if(audioURL){
+
+            URL.revokeObjectURL(
+                audioURL
+            );
+
+        }
+
 
         audioURL =
-            URL.createObjectURL(file);
+        URL.createObjectURL(
+            file
+        );
+
+
+        audioLoaded =
+        false;
+
 
         audio.src =
-            audioURL;
+        audioURL;
 
         audio.load();
+
 
         audio.addEventListener(
             "loadedmetadata",
             function(){
 
-                musicStart.max =
-                    audio.duration;
+                audioLoaded =
+                true;
 
-                musicEnd.max =
-                    audio.duration;
 
-                if(
-                    !musicEnd.value ||
-                    parseFloat(musicEnd.value) === 0
-                ){
+                musicStart.value =
+                0;
 
-                    musicEnd.value =
-                        Math.floor(audio.duration);
 
-                }
+                musicEnd.value =
+                Math.floor(
+                    audio.duration * 10
+                ) / 10;
 
-                statusText.textContent =
-                    "MP3 loaded — " +
-                    Math.round(audio.duration) +
-                    " seconds available.";
+
+                status.textContent =
+                "MP3 Loaded — "
+                +
+                audio.duration.toFixed(1)
+                +
+                " Seconds";
 
             },
-            {once:true}
+            {
+                once:true
+            }
         );
 
     }
 );
 
 
-/* =========================================================
-   VOLUME
-========================================================= */
 
-volumeRange.addEventListener(
+/* =========================
+   VOLUME
+========================= */
+
+volume.addEventListener(
     "input",
     function(){
 
-        const value =
-            parseFloat(this.value);
-
-        audio.volume =
-            value;
+        const percent =
+        Math.round(
+            this.value * 100
+        );
 
         volumeText.textContent =
-            Math.round(value * 100) +
-            "%";
+        percent + "%";
+
+        audio.volume =
+        this.value;
 
     }
 );
 
 
-/* Default 100% */
 
-audio.volume = 1;
+/* =========================
+   FULL MUSIC
+========================= */
+
+fullMusicBtn.addEventListener(
+    "click",
+    function(){
+
+        if(!audioLoaded){
+
+            status.textContent =
+            "پہلے MP3 Upload کریں";
+
+            return;
+
+        }
 
 
-/* =========================================================
-   RATIO EVENTS
-========================================================= */
+        musicStart.value =
+        0;
 
-ratioSelect.addEventListener(
-    "change",
-    setCanvasRatio
+
+        musicEnd.value =
+        Math.floor(
+            audio.duration * 10
+        ) / 10;
+
+
+        status.textContent =
+        "Full MP3 Selected";
+
+    }
 );
 
-customWidth.addEventListener(
-    "input",
-    setCanvasRatio
-);
-
-customHeight.addEventListener(
-    "input",
-    setCanvasRatio
-);
 
 
-/* =========================================================
-   DRAW BACKGROUND
-========================================================= */
+/* =========================
+   MUSIC RANGE
+========================= */
 
-function drawBackground(){
+function getMusicRange(){
 
-    const gradient =
-        ctx.createLinearGradient(
-            0,
-            0,
-            currentWidth,
-            currentHeight
+    if(!audioLoaded){
+
+        return {
+            start:0,
+            end:0
+        };
+
+    }
+
+
+    let start =
+    parseFloat(
+        musicStart.value
+    );
+
+
+    let end =
+    parseFloat(
+        musicEnd.value
+    );
+
+
+    if(
+        isNaN(start) ||
+        start < 0
+    ){
+
+        start = 0;
+
+    }
+
+
+    if(
+        isNaN(end) ||
+        end <= 0
+    ){
+
+        end =
+        audio.duration;
+
+    }
+
+
+    start =
+    Math.min(
+        start,
+        audio.duration
+    );
+
+
+    end =
+    Math.min(
+        end,
+        audio.duration
+    );
+
+
+    if(end <= start){
+
+        end =
+        Math.min(
+            audio.duration,
+            start + 1
         );
 
-    gradient.addColorStop(
-        0,
-        "#f4f4f4"
-    );
+    }
 
-    gradient.addColorStop(
-        1,
-        "#dcdcdc"
-    );
 
-    ctx.fillStyle =
-        gradient;
-
-    ctx.fillRect(
-        0,
-        0,
-        currentWidth,
-        currentHeight
-    );
+    return {
+        start:start,
+        end:end
+    };
 
 }
 
 
-/* =========================================================
-   DRAW PRODUCT IMAGE
-========================================================= */
 
-function drawProductImage(
-    elapsed
-){
+/* =========================
+   PRODUCT DRAW
+========================= */
 
-    if(!productImage)
+function drawProductImage(t){
+
+    if(!imageLoaded){
+
+        ctx.fillStyle =
+        "#eeeeee";
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        ctx.fillStyle =
+        "#333";
+
+        ctx.textAlign =
+        "center";
+
+
+        ctx.font =
+        "bold " +
+        Math.round(
+            canvas.width * .055
+        )
+        +
+        "px Arial";
+
+
+        ctx.fillText(
+            "Upload Product Image",
+            canvas.width/2,
+            canvas.height/2
+        );
+
+
         return;
 
-    const baseSize =
-        Math.min(
-            currentWidth,
-            currentHeight
-        ) * .62;
-
-    let size =
-        baseSize;
-
-    let x =
-        currentWidth / 2;
-
-    let y =
-        currentHeight * .44;
-
-    let rotation = 0;
+    }
 
 
-    /* FLOAT */
+    const W =
+    canvas.width;
 
-    if(animationSelect.value === "float"){
+    const H =
+    canvas.height;
 
-        y +=
-            Math.sin(
-                elapsed * 2.2
-            ) * 18;
+
+    let scale = 1;
+
+    let x = 0;
+
+    let y = 0;
+
+    let rot = 0;
+
+
+    if(
+        animation.value === "float"
+    ){
+
+        y =
+        Math.sin(
+            t * Math.PI * 2
+        )
+        *
+        H * .015;
 
     }
 
 
-    /* ZOOM */
+    if(
+        animation.value === "zoom"
+    ){
 
-    if(animationSelect.value === "zoom"){
-
-        const zoom =
-            1 +
-            Math.sin(
-                elapsed * 2
-            ) * .06;
-
-        size *= zoom;
+        scale =
+        1 +
+        Math.sin(
+            t * Math.PI
+        )
+        *
+        .10;
 
     }
 
 
-    /* SLIDE */
-
-    if(animationSelect.value === "slide"){
-
-        const cycle =
-            elapsed % 4;
-
-        const amount =
-            Math.min(
-                1,
-                cycle / 1
-            );
-
-        const eased =
-            1 -
-            Math.pow(
-                1 - amount,
-                3
-            );
+    if(
+        animation.value === "slide"
+    ){
 
         x =
-            -size +
-            (currentWidth / 2 + size) *
-            eased;
+        Math.sin(
+            t * Math.PI
+        )
+        *
+        W * .08;
 
     }
 
 
-    /* ROTATE */
+    if(
+        animation.value === "rotate"
+    ){
 
-    if(animationSelect.value === "rotate"){
-
-        rotation =
-            Math.sin(
-                elapsed * .8
-            ) * .04;
+        rot =
+        Math.sin(
+            t * Math.PI * 2
+        )
+        *
+        .025;
 
     }
+
+
+    const cardW =
+    W * .82;
+
+    const cardH =
+    H * .55;
 
 
     ctx.save();
 
+
     ctx.translate(
-        x,
-        y
+        W/2 + x,
+        H*.15 + cardH/2 + y
     );
 
-    ctx.rotate(
-        rotation
+
+    ctx.rotate(rot);
+
+    ctx.scale(
+        scale,
+        scale
     );
 
-    ctx.shadowColor =
-        "rgba(0,0,0,.25)";
-
-    ctx.shadowBlur =
-        35;
-
-    ctx.shadowOffsetY =
-        18;
 
     ctx.fillStyle =
-        "#ffffff";
+    "#ffffff";
+
 
     roundRect(
         ctx,
-        -size / 2 - 25,
-        -size / 2 - 25,
-        size + 50,
-        size + 50,
+        -cardW/2,
+        -cardH/2,
+        cardW,
+        cardH,
         30
     );
 
+
     ctx.fill();
 
-    ctx.shadowColor =
-        "transparent";
+
+    const fit =
+    Math.min(
+        (cardW-40)/image.width,
+        (cardH-40)/image.height
+    );
 
 
-    const ratio =
-        productImage.width /
-        productImage.height;
+    const dw =
+    image.width * fit;
 
-    let dw =
-        size;
+    const dh =
+    image.height * fit;
 
-    let dh =
-        size;
-
-    if(ratio > 1){
-
-        dh =
-            size / ratio;
-
-    }
-
-    else{
-
-        dw =
-            size * ratio;
-
-    }
 
     ctx.drawImage(
-        productImage,
-        -dw / 2,
-        -dh / 2,
+        image,
+        -dw/2,
+        -dh/2,
         dw,
         dh
     );
+
 
     ctx.restore();
 
 }
 
 
-/* =========================================================
-   ROUNDED RECT
-========================================================= */
+
+/* =========================
+   ROUNDED CARD
+========================= */
 
 function roundRect(
-    context,
+    ctx,
     x,
     y,
-    width,
-    height,
-    radius
+    w,
+    h,
+    r
 ){
 
-    context.beginPath();
+    ctx.beginPath();
 
-    context.moveTo(
-        x + radius,
+    ctx.moveTo(
+        x+r,
         y
     );
 
-    context.lineTo(
-        x + width - radius,
+    ctx.lineTo(
+        x+w-r,
         y
     );
 
-    context.quadraticCurveTo(
-        x + width,
+    ctx.quadraticCurveTo(
+        x+w,
         y,
-        x + width,
-        y + radius
+        x+w,
+        y+r
     );
 
-    context.lineTo(
-        x + width,
-        y + height - radius
+    ctx.lineTo(
+        x+w,
+        y+h-r
     );
 
-    context.quadraticCurveTo(
-        x + width,
-        y + height,
-        x + width - radius,
-        y + height
+    ctx.quadraticCurveTo(
+        x+w,
+        y+h,
+        x+w-r,
+        y+h
     );
 
-    context.lineTo(
-        x + radius,
-        y + height
+    ctx.lineTo(
+        x+r,
+        y+h
     );
 
-    context.quadraticCurveTo(
+    ctx.quadraticCurveTo(
         x,
-        y + height,
+        y+h,
         x,
-        y + height - radius
+        y+h-r
     );
 
-    context.lineTo(
+    ctx.lineTo(
         x,
-        y + radius
+        y+r
     );
 
-    context.quadraticCurveTo(
+    ctx.quadraticCurveTo(
         x,
         y,
-        x + radius,
+        x+r,
         y
     );
 
-    context.closePath();
+    ctx.closePath();
 
 }
 
 
-/* =========================================================
-   DRAW TEXT
-========================================================= */
 
-function drawText(){
+/* =========================
+   FRAME
+========================= */
+
+function drawFrame(t){
+
+    const W =
+    canvas.width;
+
+    const H =
+    canvas.height;
+
+
+    const bg =
+    ctx.createLinearGradient(
+        0,
+        0,
+        W,
+        H
+    );
+
+
+    bg.addColorStop(
+        0,
+        "#f5f5f5"
+    );
+
+
+    bg.addColorStop(
+        1,
+        "#dddddd"
+    );
+
+
+    ctx.fillStyle =
+    bg;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+
+    drawProductImage(t);
+
 
     ctx.textAlign =
-        "center";
-
-    ctx.direction =
-        "rtl";
-
-    ctx.fillStyle =
-        "#111";
-
-    ctx.font =
-        "bold 48px Arial";
-
-    ctx.fillText(
-        productName.value ||
-        "آپ کی پروڈکٹ",
-        currentWidth / 2,
-        currentHeight * .72
-    );
-
-
-    ctx.fillStyle =
-        "#087f5b";
-
-    ctx.font =
-        "bold 55px Arial";
-
-    ctx.fillText(
-        productPrice.value ||
-        "Rs. 0",
-        currentWidth / 2,
-        currentHeight * .79
-    );
+    "center";
 
 
     /* BRAND */
 
     ctx.fillStyle =
-        "#111";
+    "#111";
+
 
     ctx.font =
-        "bold 27px Arial";
+    "bold " +
+    Math.round(
+        W*.055
+    )
+    +
+    "px Arial";
+
 
     ctx.fillText(
         "JANJUA TRADERS",
-        currentWidth / 2,
-        currentHeight * .92
+        W/2,
+        H*.075
     );
 
 
+    /* NAME */
+
+    if(
+        productName.value.trim()
+    ){
+
+        ctx.fillStyle =
+        "#111";
+
+
+        ctx.font =
+        "bold " +
+        Math.round(
+            W*.045
+        )
+        +
+        "px Arial";
+
+
+        ctx.fillText(
+            productName.value.trim(),
+            W/2,
+            H*.78
+        );
+
+    }
+
+
+    /* PRICE */
+
+    if(
+        productPrice.value.trim()
+    ){
+
+        ctx.fillStyle =
+        "#159447";
+
+
+        ctx.font =
+        "bold " +
+        Math.round(
+            W*.065
+        )
+        +
+        "px Arial";
+
+
+        ctx.fillText(
+            productPrice.value.trim(),
+            W/2,
+            H*.86
+        );
+
+    }
+
+
+    /* ORDER */
+
     ctx.fillStyle =
-        "#777";
+    "#111";
+
 
     ctx.font =
-        "22px Arial";
+    "bold " +
+    Math.round(
+        W*.035
+    )
+    +
+    "px Arial";
+
 
     ctx.fillText(
         "ORDER NOW",
-        currentWidth / 2,
-        currentHeight * .955
+        W/2,
+        H*.93
     );
 
 }
 
 
-/* =========================================================
-   DRAW COMPLETE FRAME
-========================================================= */
 
-function drawFrame(elapsed){
+/* =========================
+   PREVIEW
+========================= */
 
-    drawBackground();
+let previewRunning =
+false;
 
-    drawProductImage(
-        elapsed
-    );
+let previewStart =
+0;
 
-    drawText();
-
-}
+let previewAnimation;
 
 
-/* =========================================================
-   PREVIEW LOOP
-========================================================= */
+function previewLoop(time){
 
-function previewLoop(
-    timestamp
-){
+    if(!previewRunning)
+    return;
 
-    if(!isPlaying)
-        return;
+
+    if(!previewStart)
+    previewStart =
+    time;
+
 
     const elapsed =
-        (timestamp -
-        animationStartTime) / 1000;
+    (time-previewStart)/1000;
 
-    drawFrame(
-        elapsed
+
+    const total =
+    parseFloat(
+        duration.value
     );
 
-    animationFrame =
-        requestAnimationFrame(
-            previewLoop
-        );
+
+    const t =
+    Math.min(
+        elapsed/total,
+        1
+    );
+
+
+    drawFrame(t);
+
+
+    progress.value =
+    t*100;
+
+
+    if(
+        elapsed >= total
+    ){
+
+        previewRunning =
+        false;
+
+
+        audio.pause();
+
+
+        status.textContent =
+        "Preview Finished";
+
+
+        return;
+
+    }
+
+
+    previewAnimation =
+    requestAnimationFrame(
+        previewLoop
+    );
 
 }
 
 
-/* =========================================================
-   PLAY
-========================================================= */
 
-playBtn.addEventListener(
+/* PREVIEW */
+
+previewBtn.addEventListener(
     "click",
     async function(){
 
-        isPlaying = true;
+        previewRunning =
+        true;
 
-        animationStartTime =
-            performance.now();
 
-        await prepareAudio();
+        previewStart =
+        0;
 
-        const start =
-            parseFloat(
-                musicStart.value
-            ) || 0;
 
-        if(audio.src){
+        cancelAnimationFrame(
+            previewAnimation
+        );
+
+
+        if(audioLoaded){
+
+            const r =
+            getMusicRange();
+
 
             try{
-                audio.currentTime =
-                    start;
-            }catch(e){}
 
-            await audio.play()
-                .catch(()=>{});
+                audio.currentTime =
+                r.start;
+
+                audio.volume =
+                volume.value;
+
+                await audio.play();
+
+            }catch(e){}
 
         }
 
-        cancelAnimationFrame(
-            animationFrame
+
+        status.textContent =
+        "Preview Running...";
+
+
+        previewAnimation =
+        requestAnimationFrame(
+            previewLoop
         );
-
-        animationFrame =
-            requestAnimationFrame(
-                previewLoop
-            );
-
-        statusText.textContent =
-            "Preview Playing...";
 
     }
 );
 
 
-/* =========================================================
-   PAUSE
-========================================================= */
+
+/* PAUSE */
 
 pauseBtn.addEventListener(
     "click",
     function(){
 
-        isPlaying = false;
+        previewRunning =
+        false;
+
 
         cancelAnimationFrame(
-            animationFrame
+            previewAnimation
         );
+
 
         audio.pause();
 
-        statusText.textContent =
-            "Preview Paused.";
+
+        status.textContent =
+        "Paused";
 
     }
 );
 
 
-/* =========================================================
-   RESTART
-========================================================= */
+
+/* RESTART */
 
 restartBtn.addEventListener(
     "click",
     async function(){
 
-        isPlaying = true;
+        previewRunning =
+        true;
 
-        animationStartTime =
-            performance.now();
 
-        const start =
-            parseFloat(
-                musicStart.value
-            ) || 0;
+        previewStart =
+        0;
 
-        if(audio.src){
+
+        progress.value =
+        0;
+
+
+        if(audioLoaded){
+
+            const r =
+            getMusicRange();
+
 
             try{
 
                 audio.currentTime =
-                    start;
+                r.start;
+
+
+                await audio.play();
 
             }catch(e){}
 
-            await audio.play()
-                .catch(()=>{});
-
         }
 
-        cancelAnimationFrame(
-            animationFrame
-        );
 
-        animationFrame =
-            requestAnimationFrame(
-                previewLoop
-            );
+        previewAnimation =
+        requestAnimationFrame(
+            previewLoop
+        );
 
     }
 );
 
 
-/* =========================================================
-   AUDIO SETUP
-========================================================= */
 
-async function prepareAudio(){
-
-    if(!audio.src)
-        return;
-
-    if(!audioContext){
-
-        audioContext =
-            new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
-
-        sourceNode =
-            audioContext.createMediaElementSource(
-                audio
-            );
-
-        destinationNode =
-            audioContext.createMediaStreamDestination();
-
-        sourceNode.connect(
-            destinationNode
-        );
-
-        sourceNode.connect(
-            audioContext.destination
-        );
-
-    }
-
-    if(
-        audioContext.state ===
-        "suspended"
-    ){
-
-        await audioContext.resume();
-
-    }
-
-}
-
-
-/* =========================================================
+/* =========================
    MUSIC LOOP
-========================================================= */
+========================= */
 
 audio.addEventListener(
     "timeupdate",
     function(){
 
-        if(!isRecording)
-            return;
+        if(!audioLoaded)
+        return;
 
-        const start =
-            parseFloat(
-                musicStart.value
-            ) || 0;
 
-        let end =
-            parseFloat(
-                musicEnd.value
-            ) || 0;
-
-        if(end <= 0)
-            end = audio.duration;
+        const r =
+        getMusicRange();
 
 
         if(
-            audio.currentTime >= end
+            audio.currentTime >=
+            r.end
         ){
 
-            if(loopMusic.checked){
+            if(
+                loopMusic.checked
+            ){
 
                 audio.currentTime =
-                    start;
+                r.start;
+
+
+                if(
+                    previewRunning ||
+                    isRecording
+                ){
+
+                    audio.play()
+                    .catch(
+                        ()=>{}
+                    );
+
+                }
 
             }
-
             else{
 
                 audio.pause();
@@ -1666,367 +1948,326 @@ audio.addEventListener(
 );
 
 
-/* =========================================================
-   RECORD VIDEO
-========================================================= */
 
-recordBtn.addEventListener(
-    "click",
-    createVideo
-);
+/* =========================
+   RECORD VARIABLES
+========================= */
 
+let recorder =
+null;
 
-/* =========================================================
-   CREATE VIDEO
-========================================================= */
+let chunks = [];
 
-async function createVideo(){
+let isRecording =
+false;
 
-    if(isRecording){
+let recordStart =
+0;
 
-        alert(
-            "Recording پہلے سے جاری ہے۔"
-        );
+let recordAnimation;
 
-        return;
 
-    }
+/* =========================
+   AUDIO CONTEXT
+========================= */
 
+let audioContext =
+null;
 
-    if(!productImage){
+let audioSource =
+null;
 
-        alert(
-            "براہ کرم پہلے Product Image upload کریں۔"
-        );
+let gainNode =
+null;
 
-        return;
+let audioDestination =
+null;
 
-    }
 
+function setupAudio(){
 
-    if(
-        !window.MediaRecorder ||
-        !canvas.captureStream
-    ){
+    if(audioContext)
+    return;
 
-        alert(
-            "آپ کا browser Canvas Video Recording support نہیں کرتا۔ Chrome یا Edge استعمال کریں۔"
-        );
 
-        return;
+    audioContext =
+    new(
+        window.AudioContext ||
+        window.webkitAudioContext
+    )();
 
-    }
 
-
-    isRecording = true;
-
-    recordedChunks = [];
-
-    finalVideoBlob = null;
-
-
-    recordBtn.disabled =
-        true;
-
-    stopBtn.disabled =
-        false;
-
-    downloadBtn.style.display =
-        "none";
-
-    recordedBox.style.display =
-        "none";
-
-    progressBar.style.width =
-        "0%";
-
-
-    const duration =
-        parseFloat(
-            durationSelect.value
-        );
-
-
-    /* Audio */
-
-    await prepareAudio();
-
-
-    if(audio.src){
-
-        const start =
-            parseFloat(
-                musicStart.value
-            ) || 0;
-
-        try{
-
-            audio.currentTime =
-                start;
-
-        }catch(e){}
-
-        audio.volume =
-            parseFloat(
-                volumeRange.value
-            );
-
-        await audio.play()
-            .catch(()=>{});
-
-    }
-
-
-    /* Canvas Stream */
-
-    const canvasStream =
-        canvas.captureStream(30);
-
-
-    const finalStream =
-        new MediaStream();
-
-
-    canvasStream
-        .getVideoTracks()
-        .forEach(
-            track =>
-            finalStream.addTrack(
-                track
-            )
-        );
-
-
-    if(destinationNode){
-
-        destinationNode.stream
-            .getAudioTracks()
-            .forEach(
-                track =>
-                finalStream.addTrack(
-                    track
-                )
-            );
-
-    }
-
-
-    /* MIME */
-
-    let mimeType =
-        "video/webm;codecs=vp9,opus";
-
-
-    if(
-        !MediaRecorder.isTypeSupported(
-            mimeType
-        )
-    ){
-
-        mimeType =
-            "video/webm;codecs=vp8,opus";
-
-    }
-
-
-    if(
-        !MediaRecorder.isTypeSupported(
-            mimeType
-        )
-    ){
-
-        mimeType =
-            "video/webm";
-
-    }
-
-
-    try{
-
-        recorder =
-            new MediaRecorder(
-                finalStream,
-                {
-                    mimeType:mimeType,
-                    videoBitsPerSecond:6000000,
-                    audioBitsPerSecond:192000
-                }
-            );
-
-    }
-
-    catch(error){
-
-        isRecording = false;
-
-        recordBtn.disabled =
-            false;
-
-        alert(
-            "Video recorder start نہیں ہو سکا: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    recorder.ondataavailable =
-        function(event){
-
-            if(
-                event.data &&
-                event.data.size > 0
-            ){
-
-                recordedChunks.push(
-                    event.data
-                );
-
-            }
-
-        };
-
-
-    recorder.onstop =
-        function(){
-
-            const blob =
-                new Blob(
-                    recordedChunks,
-                    {
-                        type:mimeType
-                    }
-                );
-
-            finalVideoBlob =
-                blob;
-
-            if(finalVideoURL){
-
-                URL.revokeObjectURL(
-                    finalVideoURL
-                );
-
-            }
-
-            finalVideoURL =
-                URL.createObjectURL(
-                    blob
-                );
-
-
-            recordedVideo.src =
-                finalVideoURL;
-
-            recordedBox.style.display =
-                "block";
-
-            downloadBtn.style.display =
-                "block";
-
-
-            /* Automatic download */
-
-            downloadVideo();
-
-
-            statusText.textContent =
-                "✅ Video Ready — Download button بھی available ہے۔";
-
-
-            isRecording =
-                false;
-
-            recordBtn.disabled =
-                false;
-
-            stopBtn.disabled =
-                false;
-
-            finalStream
-                .getTracks()
-                .forEach(
-                    track =>
-                    track.stop()
-                );
-
-        };
-
-
-    recorder.onerror =
-        function(event){
-
-            console.error(
-                event
-            );
-
-            isRecording =
-                false;
-
-            recordBtn.disabled =
-                false;
-
-            statusText.textContent =
-                "Recording Error";
-
-        };
-
-
-    recorder.start(
-        250
+    audioSource =
+    audioContext.createMediaElementSource(
+        audio
     );
 
 
-    statusText.textContent =
-        "🔴 Recording...";
+    gainNode =
+    audioContext.createGain();
 
 
-    const recordingStart =
-        performance.now();
+    audioDestination =
+    audioContext.createMediaStreamDestination();
 
 
-    function recordingLoop(
-        now
-    ){
-
-        if(!isRecording)
-            return;
+    gainNode.gain.value =
+    parseFloat(
+        volume.value
+    );
 
 
-        const elapsed =
-            (now -
-            recordingStart) / 1000;
+    audioSource.connect(
+        gainNode
+    );
 
 
-        drawFrame(
-            elapsed
-        );
+    gainNode.connect(
+        audioContext.destination
+    );
 
 
-        const percent =
-            Math.min(
-                100,
-                (elapsed /
-                duration) * 100
-            );
+    gainNode.connect(
+        audioDestination
+    );
+
+}
 
 
-        progressBar.style.width =
-            percent + "%";
+
+/* =========================
+   WEBM RECORDING
+========================= */
+
+async function recordCanvas(){
+
+    if(!imageLoaded){
+
+        status.textContent =
+        "پہلے Product Image Upload کریں";
+
+        return;
+
+    }
 
 
-        statusText.textContent =
-            "🔴 Recording — " +
-            Math.ceil(elapsed) +
-            " / " +
-            duration +
-            " seconds";
+    if(audioLoaded){
+
+        setupAudio();
 
 
         if(
-            elapsed >= duration
+            audioContext.state ===
+            "suspended"
+        ){
+
+            await audioContext.resume();
+
+        }
+
+
+        const r =
+        getMusicRange();
+
+
+        audio.currentTime =
+        r.start;
+
+
+        audio.volume =
+        volume.value;
+
+
+        gainNode.gain.value =
+        parseFloat(
+            volume.value
+        );
+
+    }
+
+
+    const canvasStream =
+    canvas.captureStream(30);
+
+
+    let tracks =
+    [
+        ...canvasStream.getVideoTracks()
+    ];
+
+
+    if(audioLoaded){
+
+        tracks =
+        tracks.concat(
+            audioDestination
+            .stream
+            .getAudioTracks()
+        );
+
+    }
+
+
+    const finalStream =
+    new MediaStream(
+        tracks
+    );
+
+
+    let mime =
+    "video/webm";
+
+
+    if(
+        MediaRecorder.isTypeSupported(
+            "video/webm;codecs=vp9,opus"
+        )
+    ){
+
+        mime =
+        "video/webm;codecs=vp9,opus";
+
+    }
+    else if(
+        MediaRecorder.isTypeSupported(
+            "video/webm;codecs=vp8,opus"
+        )
+    ){
+
+        mime =
+        "video/webm;codecs=vp8,opus";
+
+    }
+
+
+    recorder =
+    new MediaRecorder(
+        finalStream,
+        {
+            mimeType:mime,
+            videoBitsPerSecond:8000000
+        }
+    );
+
+
+    chunks = [];
+
+
+    recorder.ondataavailable =
+    function(e){
+
+        if(e.data.size > 0){
+
+            chunks.push(
+                e.data
+            );
+
+        }
+
+    };
+
+
+    recorder.onstop =
+    async function(){
+
+        const webmBlob =
+        new Blob(
+            chunks,
+            {
+                type:"video/webm"
+            }
+        );
+
+
+        await convertToMP4(
+            webmBlob
+        );
+
+
+        finalStream
+        .getTracks()
+        .forEach(
+            track =>
+            track.stop()
+        );
+
+    };
+
+
+    recorder.start(200);
+
+
+    isRecording =
+    true;
+
+
+    recordStart =
+    performance.now();
+
+
+    recordBtn.disabled =
+    true;
+
+
+    stopBtn.disabled =
+    false;
+
+
+    result.style.display =
+    "none";
+
+
+    status.textContent =
+    "🔴 Video Recording...";
+
+
+    if(audioLoaded){
+
+        try{
+
+            await audio.play();
+
+        }catch(e){}
+
+    }
+
+
+    function recordLoop(){
+
+        if(!isRecording)
+        return;
+
+
+        const elapsed =
+        (
+            performance.now()
+            -
+            recordStart
+        )/1000;
+
+
+        const total =
+        parseFloat(
+            duration.value
+        );
+
+
+        const t =
+        Math.min(
+            elapsed/total,
+            1
+        );
+
+
+        drawFrame(t);
+
+
+        progress.value =
+        t*100;
+
+
+        if(
+            elapsed >= total
         ){
 
             stopRecording();
@@ -2036,174 +2277,372 @@ async function createVideo(){
         }
 
 
+        recordAnimation =
         requestAnimationFrame(
-            recordingLoop
+            recordLoop
         );
 
     }
 
 
+    recordAnimation =
     requestAnimationFrame(
-        recordingLoop
+        recordLoop
     );
 
 }
 
 
-/* =========================================================
-   STOP RECORDING
-========================================================= */
 
-stopBtn.addEventListener(
-    "click",
-    stopRecording
-);
-
+/* =========================
+   STOP
+========================= */
 
 function stopRecording(){
 
+    if(!isRecording)
+    return;
+
+
+    isRecording =
+    false;
+
+
+    cancelAnimationFrame(
+        recordAnimation
+    );
+
+
     if(
         recorder &&
-        recorder.state !==
-        "inactive"
+        recorder.state !== "inactive"
     ){
 
         recorder.stop();
 
     }
 
-    isRecording =
-        false;
 
     audio.pause();
 
+
+    recordBtn.disabled =
+    false;
+
+
+    stopBtn.disabled =
+    true;
+
 }
 
 
-/* =========================================================
-   DOWNLOAD VIDEO
-========================================================= */
 
-downloadBtn.addEventListener(
-    "click",
-    downloadVideo
-);
+/* =========================
+   FFMPEG MP4 CONVERSION
+========================= */
+
+let ffmpeg =
+new FFmpeg();
+
+let ffmpegLoaded =
+false;
 
 
-function downloadVideo(){
+async function loadFFmpeg(){
 
-    if(!finalVideoBlob){
+    if(ffmpegLoaded)
+    return;
 
-        alert(
-            "پہلے Video Record کریں۔"
+
+    ffmpegStatus.textContent =
+    "MP4 Engine: Loading...";
+
+
+    status.textContent =
+    "⏳ MP4 Engine load ہو رہا ہے...";
+
+
+    const baseURL =
+    "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm";
+
+
+    await ffmpeg.load({
+
+        coreURL:
+        await toBlobURL(
+            `${baseURL}/ffmpeg-core.js`,
+            "text/javascript"
+        ),
+
+        wasmURL:
+        await toBlobURL(
+            `${baseURL}/ffmpeg-core.wasm`,
+            "application/wasm"
+        )
+
+    });
+
+
+    ffmpegLoaded =
+    true;
+
+
+    ffmpegStatus.textContent =
+    "MP4 Engine: Ready ✓";
+
+
+    status.textContent =
+    "MP4 Engine Ready";
+
+}
+
+
+
+/* =========================
+   CONVERT WEBM TO MP4
+========================= */
+
+async function convertToMP4(
+    webmBlob
+){
+
+    try{
+
+        await loadFFmpeg();
+
+
+        status.textContent =
+        "⏳ MP4 Conversion شروع ہو رہی ہے...";
+
+
+        ffmpegStatus.textContent =
+        "MP4 Conversion: Processing...";
+
+
+        const inputData =
+        await fetchFile(
+            webmBlob
         );
 
-        return;
+
+        await ffmpeg.writeFile(
+            "input.webm",
+            inputData
+        );
+
+
+        await ffmpeg.exec([
+            "-i",
+            "input.webm",
+
+            "-c:v",
+            "libx264",
+
+            "-preset",
+            "veryfast",
+
+            "-crf",
+            "23",
+
+            "-pix_fmt",
+            "yuv420p",
+
+            "-c:a",
+            "aac",
+
+            "-b:a",
+            "192k",
+
+            "-movflags",
+            "+faststart",
+
+            "output.mp4"
+        ]);
+
+
+        const mp4Data =
+        await ffmpeg.readFile(
+            "output.mp4"
+        );
+
+
+        const mp4Blob =
+        new Blob(
+            [mp4Data.buffer],
+            {
+                type:"video/mp4"
+            }
+        );
+
+
+        const url =
+        URL.createObjectURL(
+            mp4Blob
+        );
+
+
+        resultVideo.src =
+        url;
+
+
+        downloadBtn.href =
+        url;
+
+
+        downloadBtn.download =
+        "JANJUA-TRADERS-"
+        +
+        ratios[
+            ratioSelect.value
+        ].name
+        +
+        "-Video.mp4";
+
+
+        downloadBtn.textContent =
+        "⬇️ Download MP4 Video";
+
+
+        result.style.display =
+        "block";
+
+
+        ffmpegStatus.textContent =
+        "MP4 Conversion: Complete ✓";
+
+
+        status.textContent =
+        "✅ حقیقی MP4 ویڈیو تیار ہے — Download کریں";
+
+
+        progress.value =
+        100;
+
+
+        /* CLEAN TEMP FILES */
+
+        try{
+
+            await ffmpeg.deleteFile(
+                "input.webm"
+            );
+
+            await ffmpeg.deleteFile(
+                "output.mp4"
+            );
+
+        }catch(e){}
+
+
+    }
+    catch(error){
+
+        console.error(error);
+
+
+        ffmpegStatus.textContent =
+        "MP4 Conversion Failed";
+
+
+        status.textContent =
+        "❌ MP4 Conversion میں مسئلہ آیا۔ دوبارہ کوشش کریں۔";
+
+
+        alert(
+            "MP4 conversion failed.\n\n" +
+            "Chrome یا Edge browser میں دوبارہ کوشش کریں۔"
+        );
 
     }
 
-
-    const url =
-        finalVideoURL ||
-        URL.createObjectURL(
-            finalVideoBlob
-        );
-
-
-    const platform =
-        ratioSelect.value;
-
-
-    let name =
-        "JANJUA-TRADERS";
-
-
-    if(platform === "tiktok")
-        name += "-TikTok-9x16";
-
-    else if(platform === "youtube")
-        name += "-YouTube-16x9";
-
-    else if(platform === "instagram")
-        name += "-Instagram-4x5";
-
-    else if(platform === "facebook")
-        name += "-Facebook-4x5";
-
-    else
-        name += "-Custom";
-
-
-    name +=
-        "-Product-Ad.webm";
-
-
-    const link =
-        document.createElement("a");
-
-    link.href =
-        url;
-
-    link.download =
-        name;
-
-    document.body.appendChild(
-        link
-    );
-
-    link.click();
-
-    link.remove();
-
 }
 
 
-/* =========================================================
-   INPUT TEXT LIVE UPDATE
-========================================================= */
+
+/* =========================
+   CREATE BUTTON
+========================= */
+
+recordBtn.addEventListener(
+    "click",
+    async function(){
+
+        await recordCanvas();
+
+    }
+);
+
+
+
+/* =========================
+   STOP BUTTON
+========================= */
+
+stopBtn.addEventListener(
+    "click",
+    function(){
+
+        stopRecording();
+
+    }
+);
+
+
+
+/* =========================
+   LIVE TEXT
+========================= */
 
 productName.addEventListener(
     "input",
-    () => drawFrame(0)
+    function(){
+
+        drawFrame(0);
+
+    }
 );
+
 
 productPrice.addEventListener(
     "input",
-    () => drawFrame(0)
+    function(){
+
+        drawFrame(0);
+
+    }
 );
 
-animationSelect.addEventListener(
+
+animation.addEventListener(
     "change",
-    () => drawFrame(0)
+    function(){
+
+        drawFrame(0);
+
+    }
 );
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
 
-setCanvasRatio();
+/* =========================
+   INITIAL
+========================= */
+
+setRatio();
 
 drawFrame(0);
 
-stopBtn.disabled = true;
 
+/* =========================
+   PRELOAD FFMPEG
+========================= */
 
-/* =========================================================
-   PREVENT PAGE LEAVE DURING RECORDING
-========================================================= */
+loadFFmpeg()
+.catch(
+    function(){
 
-window.addEventListener(
-    "beforeunload",
-    function(event){
-
-        if(isRecording){
-
-            event.preventDefault();
-
-            event.returnValue = "";
-
-        }
+        ffmpegStatus.textContent =
+        "MP4 Engine: Click Create MP4 to Load";
 
     }
 );
