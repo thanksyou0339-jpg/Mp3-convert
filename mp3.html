@@ -1,0 +1,1247 @@
+
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jindua Traders - Product Ad Maker</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#0d1117;
+    color:white;
+    font-family:Arial,"Noto Nastaliq Urdu",sans-serif;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin:5px 0 20px;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.main{
+    display:grid;
+    grid-template-columns:330px 1fr;
+    gap:20px;
+}
+
+.control-panel{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:18px;
+    padding:18px;
+}
+
+label{
+    display:block;
+    margin-top:14px;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+select{
+    width:100%;
+    padding:11px;
+    border-radius:10px;
+    border:1px solid #30363d;
+    background:#0d1117;
+    color:white;
+}
+
+button{
+    border:0;
+    border-radius:10px;
+    padding:10px 13px;
+    margin:4px 2px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-green{
+    background:#20c997;
+    color:#06130f;
+}
+
+.btn-dark{
+    background:#30363d;
+    color:white;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.help{
+    color:#aeb6c2;
+    font-size:13px;
+    line-height:1.7;
+    margin-top:15px;
+}
+
+/* =========================
+   VIDEO STAGE
+========================= */
+
+.preview-area{
+    display:flex;
+    justify-content:center;
+}
+
+.stage{
+    position:relative;
+
+    width:100%;
+    max-width:450px;
+
+    aspect-ratio:9/16;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #303b50,
+            #111722 55%,
+            #080b10
+        );
+
+    box-shadow:0 20px 60px rgba(0,0,0,.7);
+}
+
+/* =========================
+   MUSIC PLAYER
+========================= */
+
+.music-player{
+
+    position:absolute;
+
+    top:5%;
+    left:5%;
+
+    width:43%;
+
+    z-index:10;
+
+    direction:ltr;
+
+    text-align:left;
+}
+
+.music-name{
+
+    font-size:11px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    margin-bottom:7px;
+}
+
+.progress{
+
+    width:100%;
+
+    height:5px;
+
+    background:rgba(255,255,255,.2);
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#20c997;
+}
+
+.music-buttons{
+
+    display:flex;
+
+    gap:4px;
+
+    margin-top:7px;
+}
+
+.music-buttons button{
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    padding:6px 8px;
+
+    margin:0;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card{
+
+    position:absolute;
+
+    top:24%;
+    right:7%;
+
+    width:86%;
+    height:52%;
+
+    padding:8px;
+
+    background:white;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.65);
+
+    animation:
+        floating 3.5s ease-in-out infinite;
+}
+
+.product-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    background:#f4f4f4;
+
+    border-radius:18px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes floating{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateY(-14px)
+            rotate(-1deg)
+            scale(1.025);
+    }
+}
+
+@keyframes zoom{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.07);
+    }
+}
+
+@keyframes slide{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(-18px);
+    }
+}
+
+/* =========================
+   PRODUCT INFORMATION
+========================= */
+
+.product-info{
+
+    position:absolute;
+
+    bottom:7%;
+
+    left:7%;
+    right:7%;
+
+    text-align:center;
+
+    z-index:10;
+}
+
+.product-name{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.8);
+}
+
+.product-price{
+
+    margin-top:5px;
+
+    font-size:19px;
+
+    color:#61efc4;
+}
+
+.brand{
+
+    position:absolute;
+
+    bottom:2%;
+
+    left:5%;
+
+    font-size:10px;
+
+    opacity:.55;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:760px){
+
+    .main{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stage{
+
+        max-width:430px;
+
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h1>
+Jindua Traders — Product Advertisement Maker
+</h1>
+
+
+<div class="main">
+
+
+<!-- ==========================================
+     CONTROL PANEL
+=========================================== -->
+
+<div class="control-panel">
+
+<label>
+1۔ پروڈکٹ کی تصویر
+</label>
+
+<input
+    type="file"
+    id="imageInput"
+    accept="image/*"
+>
+
+
+<label>
+2۔ MP3 میوزک
+</label>
+
+<input
+    type="file"
+    id="audioInput"
+    accept="audio/*"
+>
+
+
+<label>
+3۔ پروڈکٹ کا نام
+</label>
+
+<input
+    type="text"
+    id="productName"
+    value="آپ کی پروڈکٹ"
+>
+
+
+<label>
+4۔ قیمت
+</label>
+
+<input
+    type="text"
+    id="productPrice"
+    value="Rs. 2,300"
+>
+
+
+<label>
+5۔ Product Card Animation
+</label>
+
+<select id="animationSelect">
+
+<option value="floating">
+Float — ہلکی حرکت
+</option>
+
+<option value="zoom">
+Zoom — زوم
+</option>
+
+<option value="slide">
+Slide — دائیں بائیں حرکت
+</option>
+
+</select>
+
+
+<br><br>
+
+
+<button
+    class="btn-green"
+    id="playButton"
+>
+▶️ میوزک چلائیں
+</button>
+
+
+<button
+    class="btn-dark"
+    id="pauseButton"
+>
+⏸️ روکیں
+</button>
+
+
+<button
+    class="btn-dark"
+    id="restartButton"
+>
+↻ دوبارہ
+</button>
+
+
+<br>
+
+
+<button
+    class="btn-green"
+    id="recordButton"
+>
+⏺️ ویڈیو ریکارڈ کریں
+</button>
+
+
+<button
+    class="btn-dark"
+    id="stopButton"
+    disabled
+>
+⏹️ ریکارڈ بند کریں
+</button>
+
+
+<div class="help">
+
+<b>طریقہ:</b>
+
+<br>
+
+1۔ Product Image منتخب کریں۔
+
+<br>
+
+2۔ MP3 Music منتخب کریں۔
+
+<br>
+
+3۔ Product Name اور Price لکھیں۔
+
+<br>
+
+4۔ Animation منتخب کریں۔
+
+<br>
+
+5۔ Preview چلائیں۔
+
+<br>
+
+6۔ "ویڈیو ریکارڈ کریں" دبائیں۔
+
+<br>
+
+7۔ Browser کی Screen Sharing میں Preview Window منتخب کریں۔
+
+<br>
+
+8۔ ریکارڈ ختم کرنے کے لیے "ریکارڈ بند کریں" دبائیں۔
+
+<br><br>
+
+ویڈیو WebM Format میں Download ہوگی۔
+
+</div>
+
+</div>
+
+
+
+<!-- ==========================================
+     PREVIEW
+=========================================== -->
+
+<div class="preview-area">
+
+<div
+    class="stage"
+    id="stage"
+>
+
+
+<!-- MUSIC -->
+
+<div class="music-player">
+
+<div
+    class="music-name"
+    id="musicName"
+>
+MP3 Music
+</div>
+
+<div class="progress">
+
+<div
+    class="progress-bar"
+    id="progressBar"
+>
+</div>
+
+</div>
+
+
+<div class="music-buttons">
+
+<button id="previousButton">
+⏮
+</button>
+
+<button id="playSmall">
+▶
+</button>
+
+<button id="nextButton">
+⏭
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT CARD -->
+
+<div
+    class="product-card"
+    id="productCard"
+>
+
+<img
+    id="productImage"
+    alt="Product"
+>
+
+</div>
+
+
+
+<!-- PRODUCT INFO -->
+
+<div class="product-info">
+
+<div
+    class="product-name"
+    id="displayName"
+>
+آپ کی پروڈکٹ
+</div>
+
+<div
+    class="product-price"
+    id="displayPrice"
+>
+Rs. 2,300
+</div>
+
+</div>
+
+
+<div class="brand">
+
+JINDUA TRADERS
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- AUDIO -->
+
+<audio
+    id="audio"
+>
+</audio>
+
+
+
+<script>
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const imageInput =
+    document.getElementById("imageInput");
+
+const audioInput =
+    document.getElementById("audioInput");
+
+const productImage =
+    document.getElementById("productImage");
+
+const audio =
+    document.getElementById("audio");
+
+const productName =
+    document.getElementById("productName");
+
+const productPrice =
+    document.getElementById("productPrice");
+
+const displayName =
+    document.getElementById("displayName");
+
+const displayPrice =
+    document.getElementById("displayPrice");
+
+const productCard =
+    document.getElementById("productCard");
+
+const animationSelect =
+    document.getElementById("animationSelect");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+imageInput.addEventListener(
+    "change",
+    function(){
+
+        if(this.files.length > 0){
+
+            productImage.src =
+                URL.createObjectURL(
+                    this.files[0]
+                );
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   AUDIO
+========================================== */
+
+audioInput.addEventListener(
+    "change",
+    function(){
+
+        if(this.files.length > 0){
+
+            audio.src =
+                URL.createObjectURL(
+                    this.files[0]
+                );
+
+            document.getElementById(
+                "musicName"
+            ).textContent =
+                this.files[0].name;
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   PRODUCT TEXT
+========================================== */
+
+productName.addEventListener(
+    "input",
+    function(){
+
+        displayName.textContent =
+            this.value ||
+            "آپ کی پروڈکٹ";
+
+    }
+);
+
+
+productPrice.addEventListener(
+    "input",
+    function(){
+
+        displayPrice.textContent =
+            this.value;
+
+    }
+);
+
+
+
+/* ==========================================
+   MUSIC CONTROL
+========================================== */
+
+function playMusic(){
+
+    if(!audio.src){
+
+        alert(
+            "پہلے MP3 Music منتخب کریں۔"
+        );
+
+        return;
+
+    }
+
+    audio.play();
+
+}
+
+
+function pauseMusic(){
+
+    audio.pause();
+
+}
+
+
+document.getElementById(
+    "playButton"
+).onclick = playMusic;
+
+
+document.getElementById(
+    "pauseButton"
+).onclick = pauseMusic;
+
+
+document.getElementById(
+    "playSmall"
+).onclick = function(){
+
+    if(audio.paused){
+
+        playMusic();
+
+    }else{
+
+        pauseMusic();
+
+    }
+
+};
+
+
+document.getElementById(
+    "restartButton"
+).onclick = function(){
+
+    audio.currentTime = 0;
+
+    playMusic();
+
+};
+
+
+
+/* ==========================================
+   PREVIOUS / NEXT
+========================================== */
+
+document.getElementById(
+    "previousButton"
+).onclick = function(){
+
+    audio.currentTime =
+        Math.max(
+            0,
+            audio.currentTime - 5
+        );
+
+};
+
+
+document.getElementById(
+    "nextButton"
+).onclick = function(){
+
+    if(audio.duration){
+
+        audio.currentTime =
+            Math.min(
+                audio.duration,
+                audio.currentTime + 5
+            );
+
+    }
+
+};
+
+
+
+/* ==========================================
+   PROGRESS BAR
+========================================== */
+
+audio.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(audio.duration){
+
+            const percentage =
+                (
+                    audio.currentTime /
+                    audio.duration
+                ) * 100;
+
+            progressBar.style.width =
+                percentage + "%";
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   PLAY / PAUSE ICON
+========================================== */
+
+audio.addEventListener(
+    "play",
+    function(){
+
+        document.getElementById(
+            "playSmall"
+        ).textContent = "⏸";
+
+    }
+);
+
+
+audio.addEventListener(
+    "pause",
+    function(){
+
+        document.getElementById(
+            "playSmall"
+        ).textContent = "▶";
+
+    }
+);
+
+
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+animationSelect.addEventListener(
+    "change",
+    function(){
+
+        productCard.style.animation =
+            "none";
+
+        void productCard.offsetWidth;
+
+
+        if(this.value === "floating"){
+
+            productCard.style.animation =
+                "floating 3.5s ease-in-out infinite";
+
+        }
+
+
+        if(this.value === "zoom"){
+
+            productCard.style.animation =
+                "zoom 3s ease-in-out infinite";
+
+        }
+
+
+        if(this.value === "slide"){
+
+            productCard.style.animation =
+                "slide 3s ease-in-out infinite";
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   VIDEO RECORDING
+========================================== */
+
+let recorder = null;
+
+let recordedChunks = [];
+
+
+document.getElementById(
+    "recordButton"
+).onclick = async function(){
+
+    if(!audio.src){
+
+        alert(
+            "پہلے MP3 Music منتخب کریں۔"
+        );
+
+        return;
+
+    }
+
+
+    if(!productImage.src){
+
+        alert(
+            "پہلے Product Image منتخب کریں۔"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        /*
+        Browser Screen Recording
+        */
+
+        const stream =
+            await navigator.mediaDevices
+            .getDisplayMedia({
+
+                video:{
+                    frameRate:30
+                },
+
+                audio:true
+
+            });
+
+
+
+        let options = {
+
+            mimeType:
+                "video/webm;codecs=vp9,opus"
+
+        };
+
+
+        if(
+            !MediaRecorder
+            .isTypeSupported(
+                options.mimeType
+            )
+        ){
+
+            options = {
+
+                mimeType:
+                    "video/webm"
+
+            };
+
+        }
+
+
+
+        recorder =
+            new MediaRecorder(
+                stream,
+                options
+            );
+
+
+        recordedChunks = [];
+
+
+
+        recorder.ondataavailable =
+            function(event){
+
+                if(
+                    event.data &&
+                    event.data.size > 0
+                ){
+
+                    recordedChunks.push(
+                        event.data
+                    );
+
+                }
+
+            };
+
+
+
+        recorder.onstop =
+            function(){
+
+                const blob =
+                    new Blob(
+                        recordedChunks,
+                        {
+                            type:
+                                "video/webm"
+                        }
+                    );
+
+
+                const url =
+                    URL.createObjectURL(
+                        blob
+                    );
+
+
+                const downloadLink =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                downloadLink.href =
+                    url;
+
+
+                downloadLink.download =
+                    "Jindua-Traders-Product-Ad.webm";
+
+
+                document.body.appendChild(
+                    downloadLink
+                );
+
+
+                downloadLink.click();
+
+
+                downloadLink.remove();
+
+
+                setTimeout(
+                    function(){
+
+                        URL.revokeObjectURL(
+                            url
+                        );
+
+                    },
+                    2000
+                );
+
+
+                stream
+                .getTracks()
+                .forEach(
+                    function(track){
+
+                        track.stop();
+
+                    }
+                );
+
+
+                document.getElementById(
+                    "stopButton"
+                ).disabled = true;
+
+
+                document.getElementById(
+                    "recordButton"
+                ).disabled = false;
+
+            };
+
+
+
+        /*
+        اگر user نے Browser کا
+        Share/Stop بٹن دبایا
+        */
+
+        stream
+        .getVideoTracks()[0]
+        .addEventListener(
+            "ended",
+            function(){
+
+                if(
+                    recorder &&
+                    recorder.state !==
+                    "inactive"
+                ){
+
+                    recorder.stop();
+
+                }
+
+            }
+        );
+
+
+
+        recorder.start();
+
+
+        document.getElementById(
+            "stopButton"
+        ).disabled = false;
+
+
+        document.getElementById(
+            "recordButton"
+        ).disabled = true;
+
+
+        /*
+        Music automatically starts
+        */
+
+        audio.currentTime = 0;
+
+        playMusic();
+
+
+    }
+
+    catch(error){
+
+        alert(
+            "Screen Recording کی اجازت نہیں ملی۔ Browser میں Screen/Tab Share کی اجازت دیں۔"
+        );
+
+    }
+
+};
+
+
+
+/* ==========================================
+   STOP RECORDING
+========================================== */
+
+document.getElementById(
+    "stopButton"
+).onclick = function(){
+
+    if(
+        recorder &&
+        recorder.state !==
+        "inactive"
+    ){
+
+        recorder.stop();
+
+    }
+
+    audio.pause();
+
+};
+
+</script>
+
+</body>
+</html>
